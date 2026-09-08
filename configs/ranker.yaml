@@ -1,0 +1,31 @@
+seed: 2026
+
+paths:
+  features: data/processed/features_standard.parquet
+  item_feature_dir: artifacts/item_features
+  model: artifacts/ranker/lightgbm_long_view.txt
+  results: results/ranker_standard_validation.json
+
+training:
+  internal_validation_fraction: 0.1
+  max_train_rows: 1000000
+  max_internal_validation_rows: 250000
+
+model:
+  boosting_type: gbdt
+  learning_rate: 0.05
+  num_leaves: 63
+  min_data_in_leaf: 200
+  feature_fraction: 0.8
+  bagging_fraction: 0.8
+  bagging_freq: 1
+  lambda_l1: 0.1
+  lambda_l2: 1.0
+  num_threads: 8
+  verbosity: -1
+  num_boost_round: 1000
+  early_stopping_rounds: 50
+  log_period: 25
+
+evaluation:
+  batch_rows: 250000

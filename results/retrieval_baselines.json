@@ -1,0 +1,107 @@
+{
+  "models": {
+    "popularity_positive_count": {
+      "periods": {
+        "test": {
+          "catalog_coverage_at_k": 3.377497834896435e-05,
+          "metrics": {
+            "hitrate@100": 0.0007231529468482585,
+            "hitrate@20": 0.0001205254911413764,
+            "hitrate@50": 0.000602627455706882,
+            "recall_all@100": 0.0007231529468482585,
+            "recall_all@20": 0.0001205254911413764,
+            "recall_all@50": 0.000602627455706882,
+            "recall_warm@100": 0.0029702970297029703,
+            "recall_warm@20": 0.0004950495049504951,
+            "recall_warm@50": 0.0024752475247524753
+          },
+          "queries": 8297,
+          "targets": 8297,
+          "warm_target_fraction": 0.24346149210558032,
+          "warm_targets": 2020
+        },
+        "validation": {
+          "catalog_coverage_at_k": 4.952148100355989e-05,
+          "metrics": {
+            "hitrate@100": 0.0002817695125387433,
+            "hitrate@20": 0.00014088475626937165,
+            "hitrate@50": 0.0002817695125387433,
+            "recall_all@100": 0.0002817695125387433,
+            "recall_all@20": 0.00014088475626937165,
+            "recall_all@50": 0.0002817695125387433,
+            "recall_warm@100": 0.0012953367875647669,
+            "recall_warm@20": 0.0006476683937823834,
+            "recall_warm@50": 0.0012953367875647669
+          },
+          "queries": 7098,
+          "targets": 7098,
+          "warm_target_fraction": 0.21752606367990984,
+          "warm_targets": 1544
+        }
+      }
+    },
+    "sequential_itemcf": {
+      "context_window": 5,
+      "neighbors_per_item": 200,
+      "periods": {
+        "test": {
+          "artifact": {
+            "neighbors": 10245235,
+            "output_path": "artifacts/itemcf_neighbors_test.parquet",
+            "source_items": 933379
+          },
+          "catalog_coverage_at_k": 0.11465266895614287,
+          "metrics": {
+            "hitrate@100": 0.0004821019645655056,
+            "hitrate@20": 0.0,
+            "hitrate@50": 0.0001205254911413764,
+            "recall_all@100": 0.0004821019645655056,
+            "recall_all@20": 0.0,
+            "recall_all@50": 0.0001205254911413764,
+            "recall_warm@100": 0.0019801980198019802,
+            "recall_warm@20": 0.0,
+            "recall_warm@50": 0.0004950495049504951
+          },
+          "queries": 8297,
+          "targets": 8297,
+          "warm_target_fraction": 0.24346149210558032,
+          "warm_targets": 2020
+        },
+        "validation": {
+          "artifact": {
+            "neighbors": 6512848,
+            "output_path": "artifacts/itemcf_neighbors_validation.parquet",
+            "source_items": 627209
+          },
+          "catalog_coverage_at_k": 0.12881716291906964,
+          "metrics": {
+            "hitrate@100": 0.0002817695125387433,
+            "hitrate@20": 0.0,
+            "hitrate@50": 0.0002817695125387433,
+            "recall_all@100": 0.0002817695125387433,
+            "recall_all@20": 0.0,
+            "recall_all@50": 0.0002817695125387433,
+            "recall_warm@100": 0.0012953367875647669,
+            "recall_warm@20": 0.0,
+            "recall_warm@50": 0.0012953367875647669
+          },
+          "queries": 7098,
+          "targets": 7098,
+          "warm_target_fraction": 0.21752606367990984,
+          "warm_targets": 1544
+        }
+      }
+    }
+  },
+  "protocol": {
+    "history_size": 50,
+    "query": "first_novel_long_view_per_user_utc8_day",
+    "target_column": "long_view",
+    "test_refit": "train_plus_validation",
+    "top_k": [
+      20,
+      50,
+      100
+    ]
+  }
+}

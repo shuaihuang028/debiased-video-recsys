@@ -1,0 +1,29 @@
+{
+  "log_random_4_22_to_5_08_1k.csv": {
+    "max_date": 20220508,
+    "min_date": 20220422,
+    "rows": 43028,
+    "timestamp_date_mismatch_rows": 311,
+    "users": null,
+    "videos": null,
+    "zero_duration_rows": 1310
+  },
+  "log_standard_4_08_to_4_21_1k.csv": {
+    "max_date": 20220421,
+    "min_date": 20220408,
+    "rows": 5055984,
+    "timestamp_date_mismatch_rows": 33926,
+    "users": null,
+    "videos": null,
+    "zero_duration_rows": 410438
+  },
+  "log_standard_4_22_to_5_08_1k.csv": {
+    "max_date": 20220508,
+    "min_date": 20220422,
+    "rows": 6657061,
+    "timestamp_date_mismatch_rows": 48891,
+    "users": null,
+    "videos": null,
+    "zero_duration_rows": 527205
+  }
+}

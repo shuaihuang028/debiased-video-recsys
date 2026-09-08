@@ -1,0 +1,62 @@
+{
+  "models": {
+    "exposure": {
+      "ann_recall_at_max_k": 0.9756000000000001,
+      "artifact": "artifacts/embeddings/faiss_exposure.index",
+      "candidate_items": 3471009,
+      "metrics": {
+        "catalog_coverage_at_k": 0.007300470842916282,
+        "metrics": {
+          "hitrate@100": 0.00042265426880811494,
+          "hitrate@20": 0.00014088475626937165,
+          "hitrate@50": 0.00014088475626937165,
+          "recall_all@100": 0.00042265426880811494,
+          "recall_all@20": 0.00014088475626937165,
+          "recall_all@50": 0.00014088475626937165,
+          "recall_warm@100": 0.0006476683937823834,
+          "recall_warm@20": 0.0,
+          "recall_warm@50": 0.0
+        },
+        "queries": 7098,
+        "targets": 7098,
+        "warm_target_fraction": 0.21752606367990984,
+        "warm_targets": 1544
+      },
+      "scorable_target_fraction": 1.0,
+      "timing_seconds": {
+        "build_index": 12.849317,
+        "search_all_queries": 19.113012875000003
+      }
+    },
+    "random": {
+      "ann_recall_at_max_k": 0.9994,
+      "artifact": "artifacts/embeddings/faiss_random.index",
+      "candidate_items": 3471009,
+      "metrics": {
+        "catalog_coverage_at_k": 0.020050653858863517,
+        "metrics": {
+          "hitrate@100": 0.0007044237813468582,
+          "hitrate@20": 0.00014088475626937165,
+          "hitrate@50": 0.0002817695125387433,
+          "recall_all@100": 0.0007044237813468582,
+          "recall_all@20": 0.00014088475626937165,
+          "recall_all@50": 0.0002817695125387433,
+          "recall_warm@100": 0.0006476683937823834,
+          "recall_warm@20": 0.0,
+          "recall_warm@50": 0.0006476683937823834
+        },
+        "queries": 7098,
+        "targets": 7098,
+        "warm_target_fraction": 0.21752606367990984,
+        "warm_targets": 1544
+      },
+      "scorable_target_fraction": 1.0,
+      "timing_seconds": {
+        "build_index": 11.523548083,
+        "search_all_queries": 16.783182167
+      }
+    }
+  },
+  "period": "validation",
+  "queries": 7098
+}

@@ -1,0 +1,70 @@
+seed: 2026
+experiment_seeds: [2026, 2027, 2028]
+
+paths:
+  features: data/processed/features_standard.parquet
+  item_feature_dir: artifacts/item_features
+  artifact_dir: artifacts/ranker/multitask
+  results: results/multitask_comparison.json
+
+training:
+  internal_validation_fraction: 0.1
+  max_train_rows: 600000
+  max_internal_validation_rows: 150000
+  batch_size: 4096
+  prediction_batch_size: 16384
+  max_epochs: 8
+  early_stopping_patience: 2
+  minimum_auc_improvement: 0.0001
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  gradient_clip_norm: 5.0
+  numeric_clip: 10.0
+  torch_threads: 8
+  device: auto
+  task_loss_weights:
+    is_click: 0.3
+    long_view: 1.0
+    is_like: 0.1
+  positive_weights:
+    is_click: 1.0
+    long_view: 1.0
+    is_like: 10.0
+
+model:
+  categorical_cardinalities:
+    user_id: 1000
+    tab: 16
+    author_bucket: 131073
+    music_bucket: 131073
+    upload_type: 33
+    video_type: 4
+    music_type: 7
+    tag_0: 69
+    tag_1: 69
+    tag_2: 69
+    tag_3: 69
+    tag_4: 69
+  embedding_dimensions:
+    user_id: 16
+    tab: 4
+    author_bucket: 16
+    music_bucket: 16
+    upload_type: 4
+    video_type: 3
+    music_type: 3
+    tag_0: 4
+    tag_1: 4
+    tag_2: 4
+    tag_3: 4
+    tag_4: 4
+  architecture:
+    dropout: 0.1
+    single_task_hidden: [128, 64]
+    shared_bottom_hidden: [128, 64]
+    task_tower_dim: 32
+    num_experts: 4
+    expert_hidden: [64, 32]
+
+evaluation:
+  batch_rows: 200000

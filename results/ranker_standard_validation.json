@@ -1,0 +1,228 @@
+{
+  "artifact": "artifacts/ranker/lightgbm_long_view.txt",
+  "categorical_features": [
+    "user_id",
+    "tab",
+    "author_bucket",
+    "music_bucket",
+    "upload_type",
+    "video_type",
+    "music_type",
+    "tag_0",
+    "tag_1",
+    "tag_2",
+    "tag_3",
+    "tag_4"
+  ],
+  "feature_count": 92,
+  "features": [
+    "user_id",
+    "tab",
+    "local_hour_sin",
+    "local_hour_cos",
+    "local_weekday_sin",
+    "local_weekday_cos",
+    "author_bucket",
+    "music_bucket",
+    "upload_type",
+    "video_type",
+    "music_type",
+    "tag_0",
+    "tag_1",
+    "tag_2",
+    "tag_3",
+    "tag_4",
+    "duration_log_seconds",
+    "aspect_ratio",
+    "item_age_days",
+    "item_metadata_missing",
+    "log1p_user_hist_impression_count",
+    "log1p_user_hist_click_count",
+    "log1p_user_hist_like_count",
+    "log1p_user_hist_long_view_count",
+    "log1p_user_hist_watch_ratio_sum",
+    "user_hist_ctr",
+    "user_hist_like_rate",
+    "user_hist_long_view_rate",
+    "user_hist_mean_watch_ratio",
+    "log1p_user_1h_impression_count",
+    "log1p_user_1h_click_count",
+    "log1p_user_1h_like_count",
+    "log1p_user_1h_long_view_count",
+    "log1p_user_1h_watch_ratio_sum",
+    "user_1h_ctr",
+    "user_1h_like_rate",
+    "user_1h_long_view_rate",
+    "user_1h_mean_watch_ratio",
+    "log1p_user_1d_impression_count",
+    "log1p_user_1d_click_count",
+    "log1p_user_1d_like_count",
+    "log1p_user_1d_long_view_count",
+    "log1p_user_1d_watch_ratio_sum",
+    "user_1d_ctr",
+    "user_1d_like_rate",
+    "user_1d_long_view_rate",
+    "user_1d_mean_watch_ratio",
+    "log1p_user_7d_impression_count",
+    "log1p_user_7d_click_count",
+    "log1p_user_7d_like_count",
+    "log1p_user_7d_long_view_count",
+    "log1p_user_7d_watch_ratio_sum",
+    "user_7d_ctr",
+    "user_7d_like_rate",
+    "user_7d_long_view_rate",
+    "user_7d_mean_watch_ratio",
+    "log1p_item_hist_impression_count",
+    "log1p_item_hist_click_count",
+    "log1p_item_hist_like_count",
+    "log1p_item_hist_long_view_count",
+    "log1p_item_hist_watch_ratio_sum",
+    "item_hist_ctr",
+    "item_hist_like_rate",
+    "item_hist_long_view_rate",
+    "item_hist_mean_watch_ratio",
+    "log1p_item_1h_impression_count",
+    "log1p_item_1h_click_count",
+    "log1p_item_1h_like_count",
+    "log1p_item_1h_long_view_count",
+    "log1p_item_1h_watch_ratio_sum",
+    "item_1h_ctr",
+    "item_1h_like_rate",
+    "item_1h_long_view_rate",
+    "item_1h_mean_watch_ratio",
+    "log1p_item_1d_impression_count",
+    "log1p_item_1d_click_count",
+    "log1p_item_1d_like_count",
+    "log1p_item_1d_long_view_count",
+    "log1p_item_1d_watch_ratio_sum",
+    "item_1d_ctr",
+    "item_1d_like_rate",
+    "item_1d_long_view_rate",
+    "item_1d_mean_watch_ratio",
+    "log1p_item_7d_impression_count",
+    "log1p_item_7d_click_count",
+    "log1p_item_7d_like_count",
+    "log1p_item_7d_long_view_count",
+    "log1p_item_7d_watch_ratio_sum",
+    "item_7d_ctr",
+    "item_7d_like_rate",
+    "item_7d_long_view_rate",
+    "item_7d_mean_watch_ratio"
+  ],
+  "objective": "long_view_binary",
+  "seed": 2026,
+  "standard_validation": {
+    "historical_item_rate_baseline": {
+      "brier_score": 0.19700162719936554,
+      "log_loss": 0.6019198947183835,
+      "positive_rate": 0.2629000007876138,
+      "positives": 767724,
+      "roc_auc": 0.6343452407119725,
+      "rows": 2920213,
+      "user_day_ndcg_at_10": 0.5433085853957527,
+      "user_days_with_positive": 7098
+    },
+    "model": {
+      "brier_score": 0.146709453567822,
+      "log_loss": 0.44700799470495295,
+      "positive_rate": 0.2629000007876138,
+      "positives": 767724,
+      "roc_auc": 0.8125271204148811,
+      "rows": 2920213,
+      "user_day_ndcg_at_10": 0.6058121892377669,
+      "user_days_with_positive": 7098
+    },
+    "prediction_seconds": 17.780384667
+  },
+  "top_features_by_gain": [
+    {
+      "feature": "tab",
+      "gain": 627052.6879386902
+    },
+    {
+      "feature": "user_1d_long_view_rate",
+      "gain": 567382.2991218567
+    },
+    {
+      "feature": "user_id",
+      "gain": 406070.9605293274
+    },
+    {
+      "feature": "user_7d_long_view_rate",
+      "gain": 214411.85118103027
+    },
+    {
+      "feature": "user_1h_long_view_rate",
+      "gain": 183823.3296432495
+    },
+    {
+      "feature": "author_bucket",
+      "gain": 178852.37203216553
+    },
+    {
+      "feature": "tag_0",
+      "gain": 96124.65055274963
+    },
+    {
+      "feature": "music_bucket",
+      "gain": 85594.65275192261
+    },
+    {
+      "feature": "duration_log_seconds",
+      "gain": 83495.50169754028
+    },
+    {
+      "feature": "log1p_user_1h_impression_count",
+      "gain": 64473.87943267822
+    },
+    {
+      "feature": "upload_type",
+      "gain": 51941.24325180054
+    },
+    {
+      "feature": "item_hist_long_view_rate",
+      "gain": 26810.95022201538
+    },
+    {
+      "feature": "user_hist_long_view_rate",
+      "gain": 23117.15630340576
+    },
+    {
+      "feature": "user_1h_mean_watch_ratio",
+      "gain": 20566.19825363159
+    },
+    {
+      "feature": "user_1h_like_rate",
+      "gain": 15049.729507446289
+    },
+    {
+      "feature": "user_1h_ctr",
+      "gain": 11987.92195892334
+    },
+    {
+      "feature": "log1p_user_1h_watch_ratio_sum",
+      "gain": 10532.299453735352
+    },
+    {
+      "feature": "item_7d_mean_watch_ratio",
+      "gain": 9919.11039352417
+    },
+    {
+      "feature": "item_hist_mean_watch_ratio",
+      "gain": 8626.215488433838
+    },
+    {
+      "feature": "item_7d_long_view_rate",
+      "gain": 8176.469383239746
+    }
+  ],
+  "training": {
+    "best_iteration": 113,
+    "internal_validation_positive_rate": 0.26234,
+    "internal_validation_rows": 250000,
+    "positive_rate": 0.263539,
+    "rows": 1000000,
+    "seconds": 18.790668,
+    "split_time_ms": 1650443169124
+  }
+}

@@ -1,0 +1,36 @@
+seed: 2026
+
+paths:
+  interaction_files:
+    - data/processed/standard_train.parquet
+    - data/processed/standard_validation.parquet
+  item_feature_dir: artifacts/item_features
+  two_tower_checkpoint: artifacts/checkpoints/two_tower_random.pt
+  faiss_index: artifacts/embeddings/faiss_random.index
+  ranker_model: artifacts/ranker/lightgbm_long_view.txt
+  snapshot_dir: artifacts/serving_snapshot
+  benchmark_results: results/serving_benchmark.json
+
+snapshot:
+  as_of_ms: 1651246340219
+  history_length: 20
+
+retrieval:
+  candidates: 100
+  search_k: 1000
+  nprobe: 1024
+  workers: 2
+
+api:
+  host: 127.0.0.1
+  port: 8000
+  default_top_k: 10
+  access_log: false
+  feature_store: memory
+  redis_url: redis://127.0.0.1:6379/0
+
+benchmark:
+  requests: 500
+  trials: 3
+  concurrency: 8
+  warmup_requests: 100

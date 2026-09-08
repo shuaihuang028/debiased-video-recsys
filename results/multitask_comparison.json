@@ -1,0 +1,2749 @@
+{
+  "aggregate": {
+    "mmoe": {
+      "best_epoch": {
+        "mean": 3.6666666666666665,
+        "standard_deviation": 0.4714045207910317
+      },
+      "parameter_count": 4267216,
+      "standard_validation": {
+        "is_click": {
+          "brier_score": {
+            "mean": 0.1789769418018173,
+            "standard_deviation": 7.793714793671008e-05
+          },
+          "log_loss": {
+            "mean": 0.5321605281389564,
+            "standard_deviation": 0.00024405926885205079
+          },
+          "roc_auc": {
+            "mean": 0.7891377989739743,
+            "standard_deviation": 0.00027111193777845405
+          },
+          "user_day_ndcg_at_10": {
+            "mean": 0.6743730978377392,
+            "standard_deviation": 0.0003720023850585812
+          }
+        },
+        "is_like": {
+          "brier_score": {
+            "mean": 0.02481056847055686,
+            "standard_deviation": 0.0011694157266161941
+          },
+          "log_loss": {
+            "mean": 0.09941437084589368,
+            "standard_deviation": 0.0034600378083700567
+          },
+          "roc_auc": {
+            "mean": 0.9238609708656798,
+            "standard_deviation": 0.00048157774034988536
+          },
+          "user_day_ndcg_at_10": {
+            "mean": 0.1225721011511725,
+            "standard_deviation": 0.0036723710501320537
+          }
+        },
+        "long_view": {
+          "brier_score": {
+            "mean": 0.1492323065298923,
+            "standard_deviation": 0.00021476266854458158
+          },
+          "log_loss": {
+            "mean": 0.45426872538414065,
+            "standard_deviation": 0.0007287706144153316
+          },
+          "roc_auc": {
+            "mean": 0.8046047305041347,
+            "standard_deviation": 0.0005618098802054578
+          },
+          "user_day_ndcg_at_10": {
+            "mean": 0.6026594825426778,
+            "standard_deviation": 0.0017296351933344888
+          }
+        }
+      },
+      "training_seconds": {
+        "mean": 32.551276639,
+        "standard_deviation": 2.746747878471474
+      }
+    },
+    "shared_bottom": {
+      "best_epoch": {
+        "mean": 4.0,
+        "standard_deviation": 0.0
+      },
+      "parameter_count": 4247404,
+      "standard_validation": {
+        "is_click": {
+          "brier_score": {
+            "mean": 0.1793788402905049,
+            "standard_deviation": 1.8867669097440398e-05
+          },
+          "log_loss": {
+            "mean": 0.5335086253230195,
+            "standard_deviation": 5.331417120500724e-05
+          },
+          "roc_auc": {
+            "mean": 0.7880055120772865,
+            "standard_deviation": 0.0002400043923401956
+          },
+          "user_day_ndcg_at_10": {
+            "mean": 0.6736305644890016,
+            "standard_deviation": 0.0010935813731074973
+          }
+        },
+        "is_like": {
+          "brier_score": {
+            "mean": 0.0245527954732087,
+            "standard_deviation": 0.001036134122284767
+          },
+          "log_loss": {
+            "mean": 0.09767324869065414,
+            "standard_deviation": 0.004464145194900254
+          },
+          "roc_auc": {
+            "mean": 0.9238729927555633,
+            "standard_deviation": 0.00018687224014897775
+          },
+          "user_day_ndcg_at_10": {
+            "mean": 0.12137919097514842,
+            "standard_deviation": 0.002099589682487394
+          }
+        },
+        "long_view": {
+          "brier_score": {
+            "mean": 0.14917161695448855,
+            "standard_deviation": 4.394657812046544e-05
+          },
+          "log_loss": {
+            "mean": 0.45397960573326174,
+            "standard_deviation": 0.00015923724182062777
+          },
+          "roc_auc": {
+            "mean": 0.8047771489516622,
+            "standard_deviation": 0.00010554049741508549
+          },
+          "user_day_ndcg_at_10": {
+            "mean": 0.6013751717511057,
+            "standard_deviation": 0.0008020186066688798
+          }
+        }
+      },
+      "training_seconds": {
+        "mean": 28.51349847233333,
+        "standard_deviation": 0.14310049133653577
+      }
+    },
+    "single_task_mlp": {
+      "best_epoch": {
+        "mean": 4.0,
+        "standard_deviation": 0.0
+      },
+      "parameter_count": 4241130,
+      "standard_validation": {
+        "long_view": {
+          "brier_score": {
+            "mean": 0.1491573581613784,
+            "standard_deviation": 0.00016010956061818617
+          },
+          "log_loss": {
+            "mean": 0.4539109742383541,
+            "standard_deviation": 0.0004412909703220694
+          },
+          "roc_auc": {
+            "mean": 0.8049388320317624,
+            "standard_deviation": 0.00020687967135848406
+          },
+          "user_day_ndcg_at_10": {
+            "mean": 0.6006753378546793,
+            "standard_deviation": 0.0038327433732415757
+          }
+        }
+      },
+      "training_seconds": {
+        "mean": 26.133053277666665,
+        "standard_deviation": 0.15848982012709467
+      }
+    }
+  },
+  "comparison": {
+    "change_vs_single_task": {
+      "mmoe": {
+        "mean": 0.001984144687998457,
+        "standard_deviation": 0.004973762842184726
+      },
+      "shared_bottom": {
+        "mean": 0.0006998338964265086,
+        "standard_deviation": 0.003605487014535219
+      },
+      "single_task_mlp": {
+        "mean": 0.0,
+        "standard_deviation": 0.0
+      }
+    },
+    "mean_long_view_ndcg_at_10": {
+      "mmoe": 0.6026594825426778,
+      "shared_bottom": 0.6013751717511057,
+      "single_task_mlp": 0.6006753378546793
+    },
+    "winner_by_mean_long_view_ndcg_at_10": "mmoe"
+  },
+  "config": {
+    "evaluation": {
+      "batch_rows": 200000
+    },
+    "experiment_seeds": [
+      2026,
+      2027,
+      2028
+    ],
+    "model": {
+      "architecture": {
+        "dropout": 0.1,
+        "expert_hidden": [
+          64,
+          32
+        ],
+        "num_experts": 4,
+        "shared_bottom_hidden": [
+          128,
+          64
+        ],
+        "single_task_hidden": [
+          128,
+          64
+        ],
+        "task_tower_dim": 32
+      },
+      "categorical_cardinalities": {
+        "author_bucket": 131073,
+        "music_bucket": 131073,
+        "music_type": 7,
+        "tab": 16,
+        "tag_0": 69,
+        "tag_1": 69,
+        "tag_2": 69,
+        "tag_3": 69,
+        "tag_4": 69,
+        "upload_type": 33,
+        "user_id": 1000,
+        "video_type": 4
+      },
+      "embedding_dimensions": {
+        "author_bucket": 16,
+        "music_bucket": 16,
+        "music_type": 3,
+        "tab": 4,
+        "tag_0": 4,
+        "tag_1": 4,
+        "tag_2": 4,
+        "tag_3": 4,
+        "tag_4": 4,
+        "upload_type": 4,
+        "user_id": 16,
+        "video_type": 3
+      }
+    },
+    "paths": {
+      "artifact_dir": "artifacts/ranker/multitask",
+      "features": "data/processed/features_standard.parquet",
+      "item_feature_dir": "artifacts/item_features",
+      "results": "results/multitask_comparison.json"
+    },
+    "seed": 2026,
+    "training": {
+      "batch_size": 4096,
+      "device": "auto",
+      "early_stopping_patience": 2,
+      "gradient_clip_norm": 5.0,
+      "internal_validation_fraction": 0.1,
+      "learning_rate": 0.001,
+      "max_epochs": 8,
+      "max_internal_validation_rows": 150000,
+      "max_train_rows": 600000,
+      "minimum_auc_improvement": 0.0001,
+      "numeric_clip": 10.0,
+      "positive_weights": {
+        "is_click": 1.0,
+        "is_like": 10.0,
+        "long_view": 1.0
+      },
+      "prediction_batch_size": 16384,
+      "task_loss_weights": {
+        "is_click": 0.3,
+        "is_like": 0.1,
+        "long_view": 1.0
+      },
+      "torch_threads": 8,
+      "weight_decay": 1e-05
+    }
+  },
+  "data": {
+    "internal_validation_positive_rates": {
+      "is_click": 0.37646666666666667,
+      "is_like": 0.012606666666666667,
+      "long_view": 0.26216
+    },
+    "internal_validation_rows": 150000,
+    "split_time_ms": 1650443169124,
+    "training_positive_rates": {
+      "is_click": 0.3794983333333333,
+      "is_like": 0.015481666666666666,
+      "long_view": 0.2634916666666667
+    },
+    "training_rows": 600000
+  },
+  "data_sample_seed": 2026,
+  "device": "cpu",
+  "experiment": "controlled_neural_multitask_comparison",
+  "experiment_seeds": [
+    2026,
+    2027,
+    2028
+  ],
+  "feature_contract": {
+    "categorical_feature_count": 12,
+    "feature_count": 92,
+    "features": [
+      "user_id",
+      "tab",
+      "local_hour_sin",
+      "local_hour_cos",
+      "local_weekday_sin",
+      "local_weekday_cos",
+      "author_bucket",
+      "music_bucket",
+      "upload_type",
+      "video_type",
+      "music_type",
+      "tag_0",
+      "tag_1",
+      "tag_2",
+      "tag_3",
+      "tag_4",
+      "duration_log_seconds",
+      "aspect_ratio",
+      "item_age_days",
+      "item_metadata_missing",
+      "log1p_user_hist_impression_count",
+      "log1p_user_hist_click_count",
+      "log1p_user_hist_like_count",
+      "log1p_user_hist_long_view_count",
+      "log1p_user_hist_watch_ratio_sum",
+      "user_hist_ctr",
+      "user_hist_like_rate",
+      "user_hist_long_view_rate",
+      "user_hist_mean_watch_ratio",
+      "log1p_user_1h_impression_count",
+      "log1p_user_1h_click_count",
+      "log1p_user_1h_like_count",
+      "log1p_user_1h_long_view_count",
+      "log1p_user_1h_watch_ratio_sum",
+      "user_1h_ctr",
+      "user_1h_like_rate",
+      "user_1h_long_view_rate",
+      "user_1h_mean_watch_ratio",
+      "log1p_user_1d_impression_count",
+      "log1p_user_1d_click_count",
+      "log1p_user_1d_like_count",
+      "log1p_user_1d_long_view_count",
+      "log1p_user_1d_watch_ratio_sum",
+      "user_1d_ctr",
+      "user_1d_like_rate",
+      "user_1d_long_view_rate",
+      "user_1d_mean_watch_ratio",
+      "log1p_user_7d_impression_count",
+      "log1p_user_7d_click_count",
+      "log1p_user_7d_like_count",
+      "log1p_user_7d_long_view_count",
+      "log1p_user_7d_watch_ratio_sum",
+      "user_7d_ctr",
+      "user_7d_like_rate",
+      "user_7d_long_view_rate",
+      "user_7d_mean_watch_ratio",
+      "log1p_item_hist_impression_count",
+      "log1p_item_hist_click_count",
+      "log1p_item_hist_like_count",
+      "log1p_item_hist_long_view_count",
+      "log1p_item_hist_watch_ratio_sum",
+      "item_hist_ctr",
+      "item_hist_like_rate",
+      "item_hist_long_view_rate",
+      "item_hist_mean_watch_ratio",
+      "log1p_item_1h_impression_count",
+      "log1p_item_1h_click_count",
+      "log1p_item_1h_like_count",
+      "log1p_item_1h_long_view_count",
+      "log1p_item_1h_watch_ratio_sum",
+      "item_1h_ctr",
+      "item_1h_like_rate",
+      "item_1h_long_view_rate",
+      "item_1h_mean_watch_ratio",
+      "log1p_item_1d_impression_count",
+      "log1p_item_1d_click_count",
+      "log1p_item_1d_like_count",
+      "log1p_item_1d_long_view_count",
+      "log1p_item_1d_watch_ratio_sum",
+      "item_1d_ctr",
+      "item_1d_like_rate",
+      "item_1d_long_view_rate",
+      "item_1d_mean_watch_ratio",
+      "log1p_item_7d_impression_count",
+      "log1p_item_7d_click_count",
+      "log1p_item_7d_like_count",
+      "log1p_item_7d_long_view_count",
+      "log1p_item_7d_watch_ratio_sum",
+      "item_7d_ctr",
+      "item_7d_like_rate",
+      "item_7d_long_view_rate",
+      "item_7d_mean_watch_ratio"
+    ],
+    "numeric_feature_count": 80
+  },
+  "final_metric": "standard_validation_long_view_user_day_ndcg_at_10",
+  "historical_item_rate_baselines": {
+    "is_click": {
+      "brier_score": 0.266221511902645,
+      "log_loss": 0.7818081431286313,
+      "positive_rate": 0.37839500063865206,
+      "positives": 1104994,
+      "roc_auc": 0.6187959267987659,
+      "rows": 2920213,
+      "user_day_ndcg_at_10": 0.615129925252647,
+      "user_days_with_positive": 7129
+    },
+    "is_like": {
+      "brier_score": 0.017779096278907596,
+      "log_loss": 0.11087022400226725,
+      "positive_rate": 0.014307175538222725,
+      "positives": 41780,
+      "roc_auc": 0.5875444224172982,
+      "rows": 2920213,
+      "user_day_ndcg_at_10": 0.0969853202702036,
+      "user_days_with_positive": 4006
+    },
+    "long_view": {
+      "brier_score": 0.19700162719936554,
+      "log_loss": 0.6019198947183835,
+      "positive_rate": 0.2629000007876138,
+      "positives": 767724,
+      "roc_auc": 0.6343452407119725,
+      "rows": 2920213,
+      "user_day_ndcg_at_10": 0.5433085853957527,
+      "user_days_with_positive": 7098
+    }
+  },
+  "primary_task": "long_view",
+  "runs": {
+    "2026": {
+      "comparison": {
+        "absolute_change_vs_single_task": {
+          "mmoe": -0.002189051027272848,
+          "shared_bottom": -0.003935882893079001,
+          "single_task_mlp": 0.0
+        },
+        "long_view_ndcg_at_10": {
+          "mmoe": 0.6028441643480688,
+          "shared_bottom": 0.6010973324822626,
+          "single_task_mlp": 0.6050332153753416
+        },
+        "winner": "single_task_mlp"
+      },
+      "standard_validation": {
+        "mmoe": {
+          "prediction_seconds": 2.03949337600001,
+          "rows_per_second": 1431832.549379158,
+          "tasks": {
+            "is_click": {
+              "brier_score": 0.1788976936645977,
+              "log_loss": 0.531936008886952,
+              "positive_rate": 0.37839500063865206,
+              "positives": 1104994,
+              "roc_auc": 0.7894630592832673,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6748401593962157,
+              "user_days_with_positive": 7129
+            },
+            "is_like": {
+              "brier_score": 0.02527529981318551,
+              "log_loss": 0.09907897090816864,
+              "positive_rate": 0.014307175538222725,
+              "positives": 41780,
+              "roc_auc": 0.924256989934718,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.1251243549039405,
+              "user_days_with_positive": 4006
+            },
+            "long_view": {
+              "brier_score": 0.1492579396073572,
+              "log_loss": 0.4544043681993706,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8044118010005669,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6028441643480688,
+              "user_days_with_positive": 7098
+            }
+          }
+        },
+        "shared_bottom": {
+          "prediction_seconds": 0.8581877919999954,
+          "rows_per_second": 3402766.8853159538,
+          "tasks": {
+            "is_click": {
+              "brier_score": 0.17938811840559615,
+              "log_loss": 0.5335027548422459,
+              "positive_rate": 0.37839500063865206,
+              "positives": 1104994,
+              "roc_auc": 0.7880050207552034,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6732500071462484,
+              "user_days_with_positive": 7129
+            },
+            "is_like": {
+              "brier_score": 0.02601288108073251,
+              "log_loss": 0.10394208894326588,
+              "positive_rate": 0.014307175538222725,
+              "positives": 41780,
+              "roc_auc": 0.9241175164548706,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.12394577732420331,
+              "user_days_with_positive": 4006
+            },
+            "long_view": {
+              "brier_score": 0.14917828585186635,
+              "log_loss": 0.4538940959232234,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.804685296162078,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6010973324822626,
+              "user_days_with_positive": 7098
+            }
+          }
+        },
+        "single_task_mlp": {
+          "prediction_seconds": 0.7467362910000617,
+          "rows_per_second": 3910634.8990875,
+          "tasks": {
+            "long_view": {
+              "brier_score": 0.14938345521088015,
+              "log_loss": 0.45453357626191854,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8047015936385463,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6050332153753416,
+              "user_days_with_positive": 7098
+            }
+          }
+        }
+      },
+      "training": {
+        "mmoe": {
+          "artifact": "artifacts/ranker/multitask/mmoe_seed2026.pt",
+          "best_epoch": 4,
+          "gate_diagnostics": {
+            "is_click": {
+              "dominant_expert": 0,
+              "mean_expert_weights": [
+                0.43412546111930783,
+                0.25673555027556605,
+                0.1692063503790802,
+                0.13993263823127336
+              ],
+              "mean_normalized_entropy": 0.8274111983444561
+            },
+            "is_like": {
+              "dominant_expert": 3,
+              "mean_expert_weights": [
+                0.04107668570839291,
+                0.058793851355041477,
+                0.3347635811954579,
+                0.5653658816729362
+              ],
+              "mean_normalized_entropy": 0.5280394964539211
+            },
+            "long_view": {
+              "dominant_expert": 0,
+              "mean_expert_weights": [
+                0.41225810862223927,
+                0.22436567119105277,
+                0.20173528012501024,
+                0.1616409397958483
+              ],
+              "mean_normalized_entropy": 0.7862166719472616
+            }
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.18061562865005573,
+                  "log_loss": 0.5368627295157924,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7841160393749735,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6597016757609994,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02320500773386717,
+                  "log_loss": 0.0940810587003054,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9159935499074087,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.21841053246797348,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.15089184457207389,
+                  "log_loss": 0.4581065971725005,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.7988125626440783,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.58197927285493,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.5063793411095937
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17875812558708945,
+                  "log_loss": 0.5316089948654072,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.788927898538164,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6692961498770312,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022825909402758547,
+                  "log_loss": 0.09582281409640571,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9194201660596851,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.22574903280454087,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14923150095066812,
+                  "log_loss": 0.45355205101109614,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8040427439501547,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5902644423364651,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4574054111671448
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17789553792620577,
+                  "log_loss": 0.5293058666188158,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7910866807427263,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6734023804326629,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.020464949064234267,
+                  "log_loss": 0.08496344693058576,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9192051765411426,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23035488343893512,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1486931253307416,
+                  "log_loss": 0.4519530562709005,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8060772128758446,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5920987346995327,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.45259921141942344
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1776147625521334,
+                  "log_loss": 0.5284918475990001,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7920208305221006,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6737200104102317,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.021871848879683842,
+                  "log_loss": 0.08930332590100679,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.919555191031414,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23727070896692276,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1483681330125885,
+                  "log_loss": 0.4511045972785018,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8069092692709399,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5948488420381679,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4492097454071045
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17764313115105815,
+                  "log_loss": 0.5283994363676723,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7921139177230039,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6742571817461381,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.021953063910133578,
+                  "log_loss": 0.0858458041506735,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9197962058036502,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23558366789465413,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14869611361014257,
+                  "log_loss": 0.4518499334618469,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8062955635887469,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5938189602044563,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4457007603645325
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17801513275295697,
+                  "log_loss": 0.529133266659522,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7914287954661651,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6716192571048746,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.019772306285747825,
+                  "log_loss": 0.08286476395772173,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9181058889629141,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23828781799953228,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14928524872507126,
+                  "log_loss": 0.45338038418672066,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8044397811631999,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5916294251883548,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4414143800640106
+            }
+          ],
+          "internal_validation": {
+            "is_click": {
+              "brier_score": 0.1776147625521334,
+              "log_loss": 0.5284918475990001,
+              "positive_rate": 0.37646666666666667,
+              "positives": 56470,
+              "roc_auc": 0.7920208305221006,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.6737200104102317,
+              "user_days_with_positive": 1578
+            },
+            "is_like": {
+              "brier_score": 0.021871848879683842,
+              "log_loss": 0.08930332590100679,
+              "positive_rate": 0.012606666666666667,
+              "positives": 1891,
+              "roc_auc": 0.919555191031414,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.23727070896692276,
+              "user_days_with_positive": 473
+            },
+            "long_view": {
+              "brier_score": 0.1483681330125885,
+              "log_loss": 0.4511045972785018,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8069092692709399,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5948488420381679,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4267216,
+          "tasks": [
+            "is_click",
+            "long_view",
+            "is_like"
+          ],
+          "training_seconds": 34.37456775
+        },
+        "shared_bottom": {
+          "artifact": "artifacts/ranker/multitask/shared_bottom_seed2026.pt",
+          "best_epoch": 4,
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.18167832036331155,
+                  "log_loss": 0.539355237839878,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7812057992565224,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6530120383714038,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02090092972957328,
+                  "log_loss": 0.08681932261139275,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9164283348151852,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.20696023144060327,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.15162564983642543,
+                  "log_loss": 0.45989934448627456,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.7968066706087072,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5760424473884617,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4913323421510061
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1799973723722779,
+                  "log_loss": 0.5350048976293046,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7859074979204845,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6637056928799173,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022427119285170282,
+                  "log_loss": 0.09381521864558474,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9175051622674211,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.2140986526456416,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1498848279196365,
+                  "log_loss": 0.45538524188004764,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8018527292272327,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5873303628883544,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4590027800051371
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17857818949082407,
+                  "log_loss": 0.5312903527962706,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7892370206627711,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6720003276734434,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02125543496224994,
+                  "log_loss": 0.08851451671658013,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9191739187439879,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.2265212648868762,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14907696155035302,
+                  "log_loss": 0.45305191904127373,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.804843951053001,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5932172701792477,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.45394679069519045
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17832761609471667,
+                  "log_loss": 0.5305508966475427,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7902907564244592,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6698667464361694,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022415822794717398,
+                  "log_loss": 0.09266491054887788,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9196250243315056,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.2283832169252622,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1487166979788248,
+                  "log_loss": 0.4520040844326223,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8059686591557353,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5922219762304831,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.45014361898740135
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1785174309245764,
+                  "log_loss": 0.5307770468042983,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7906164947923079,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6674575264010314,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.020995417292808825,
+                  "log_loss": 0.08688882580025112,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9184652081329943,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23574466436807992,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14902083289525203,
+                  "log_loss": 0.4525836732148206,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8059152805722577,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5892176580996642,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.44652319127400714
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17881038189259207,
+                  "log_loss": 0.5311385543401334,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7896359650927304,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.671120292128465,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022379729782689785,
+                  "log_loss": 0.08974650061289323,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9179857350546553,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23125649078985291,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14965522717897287,
+                  "log_loss": 0.4540102884053739,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8046465395243955,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5974088067376347,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4426159635480245
+            }
+          ],
+          "internal_validation": {
+            "is_click": {
+              "brier_score": 0.17832761609471667,
+              "log_loss": 0.5305508966475427,
+              "positive_rate": 0.37646666666666667,
+              "positives": 56470,
+              "roc_auc": 0.7902907564244592,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.6698667464361694,
+              "user_days_with_positive": 1578
+            },
+            "is_like": {
+              "brier_score": 0.022415822794717398,
+              "log_loss": 0.09266491054887788,
+              "positive_rate": 0.012606666666666667,
+              "positives": 1891,
+              "roc_auc": 0.9196250243315056,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.2283832169252622,
+              "user_days_with_positive": 473
+            },
+            "long_view": {
+              "brier_score": 0.1487166979788248,
+              "log_loss": 0.4520040844326223,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8059686591557353,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5922219762304831,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4247404,
+          "tasks": [
+            "is_click",
+            "long_view",
+            "is_like"
+          ],
+          "training_seconds": 28.313685125
+        },
+        "single_task_mlp": {
+          "artifact": "artifacts/ranker/multitask/single_task_mlp_seed2026.pt",
+          "best_epoch": 4,
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.15140482003287273,
+                  "log_loss": 0.45961235729084565,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.7976701927626216,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5833520280897705,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.48284081934928896
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14918040702288224,
+                  "log_loss": 0.45339208277330306,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8040796390033527,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5873260961857791,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4536911743005117
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14886001521527376,
+                  "log_loss": 0.4524436442206959,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8055216590849045,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5916966181318266,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4488355145359039
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14867064050678483,
+                  "log_loss": 0.4519333504190809,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8064867952869871,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.59587708050798,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.44545443983395894
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14901886851375584,
+                  "log_loss": 0.45273367377020285,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8049096423097274,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5860630965967847,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4419825708357493
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14956069413293152,
+                  "log_loss": 0.45421683852944056,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8036657122606132,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5918485126821196,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.43733694437344867
+            }
+          ],
+          "internal_validation": {
+            "long_view": {
+              "brier_score": 0.14867064050678483,
+              "log_loss": 0.4519333504190809,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8064867952869871,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.59587708050798,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4241130,
+          "tasks": [
+            "long_view"
+          ],
+          "training_seconds": 25.909559917000003
+        }
+      }
+    },
+    "2027": {
+      "comparison": {
+        "absolute_change_vs_single_task": {
+          "mmoe": 0.0089743945884464,
+          "shared_bottom": 0.004856687207864918,
+          "single_task_mlp": 0.0
+        },
+        "long_view_ndcg_at_10": {
+          "mmoe": 0.6046794570345433,
+          "shared_bottom": 0.6005617496539618,
+          "single_task_mlp": 0.5957050624460969
+        },
+        "winner": "mmoe"
+      },
+      "standard_validation": {
+        "mmoe": {
+          "prediction_seconds": 2.067693499000029,
+          "rows_per_second": 1412304.5806413104,
+          "tasks": {
+            "is_click": {
+              "brier_score": 0.179082906642982,
+              "log_loss": 0.5324998135766595,
+              "positive_rate": 0.37839500063865206,
+              "positives": 1104994,
+              "roc_auc": 0.7887993654558562,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6743492544142934,
+              "user_days_with_positive": 7129
+            },
+            "is_like": {
+              "brier_score": 0.02595272755233716,
+              "log_loss": 0.10380976789642558,
+              "positive_rate": 0.014307175538222725,
+              "positives": 41780,
+              "roc_auc": 0.9241428075072621,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.12521311153060213,
+              "user_days_with_positive": 4006
+            },
+            "long_view": {
+              "brier_score": 0.14948158103393958,
+              "log_loss": 0.45508569812357935,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8040337155429427,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6046794570345433,
+              "user_days_with_positive": 7098
+            }
+          }
+        },
+        "shared_bottom": {
+          "prediction_seconds": 0.8285060819999899,
+          "rows_per_second": 3524672.9788038367,
+          "tasks": {
+            "is_click": {
+              "brier_score": 0.1793525351109939,
+              "log_loss": 0.5334464625268113,
+              "positive_rate": 0.37839500063865206,
+              "positives": 1104994,
+              "roc_auc": 0.7882997015789948,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6751190197319852,
+              "user_days_with_positive": 7129
+            },
+            "is_like": {
+              "brier_score": 0.023715638743785347,
+              "log_loss": 0.0938914338646846,
+              "positive_rate": 0.014307175538222725,
+              "positives": 41780,
+              "roc_auc": 0.923663909413379,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.12138891409473522,
+              "user_days_with_positive": 4006
+            },
+            "long_view": {
+              "brier_score": 0.14922179509262343,
+              "log_loss": 0.4542027790493824,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8049249600542181,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6005617496539618,
+              "user_days_with_positive": 7098
+            }
+          }
+        },
+        "single_task_mlp": {
+          "prediction_seconds": 0.730467123000011,
+          "rows_per_second": 3997733.6529627163,
+          "tasks": {
+            "long_view": {
+              "brier_score": 0.1490549256743523,
+              "log_loss": 0.453562503064859,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8049091702241242,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.5957050624460969,
+              "user_days_with_positive": 7098
+            }
+          }
+        }
+      },
+      "training": {
+        "mmoe": {
+          "artifact": "artifacts/ranker/multitask/mmoe_seed2027.pt",
+          "best_epoch": 3,
+          "gate_diagnostics": {
+            "is_click": {
+              "dominant_expert": 2,
+              "mean_expert_weights": [
+                0.10892517411417017,
+                0.2835975386861153,
+                0.5278532785577451,
+                0.07962400885790896
+              ],
+              "mean_normalized_entropy": 0.7301726888306259
+            },
+            "is_like": {
+              "dominant_expert": 3,
+              "mean_expert_weights": [
+                0.2978969160174676,
+                0.23248006173887645,
+                0.0815695148214677,
+                0.38805350750678386
+              ],
+              "mean_normalized_entropy": 0.7422944230995144
+            },
+            "long_view": {
+              "dominant_expert": 2,
+              "mean_expert_weights": [
+                0.17368461094719667,
+                0.28916610586437397,
+                0.42635419764052457,
+                0.11079508544459939
+              ],
+              "mean_normalized_entropy": 0.8230251328731684
+            }
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1839726542311292,
+                  "log_loss": 0.5448964164030458,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7751268858941914,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.648077693925568,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02230641464835223,
+                  "log_loss": 0.09356882627488207,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9125077404956508,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.20972424935025913,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1529094566367032,
+                  "log_loss": 0.46398119337635996,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.7920901975817497,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5704879016999664,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.509926334994634
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17888515067892116,
+                  "log_loss": 0.5317367982981527,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7889235851044801,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6653709539718289,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022151757963295323,
+                  "log_loss": 0.09238273230358923,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9167792454967965,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.2241994633991318,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14944421824322637,
+                  "log_loss": 0.45401897989496937,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8035827000854541,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5881812264336465,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.458031479918162
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17787643236880044,
+                  "log_loss": 0.5291841023936235,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7912661672585695,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6728149758475181,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022622176141668265,
+                  "log_loss": 0.09447191510855382,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9178115579469162,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.228568713200898,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14887059869547647,
+                  "log_loss": 0.4523988748046492,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8055949854053251,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5920539525149043,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4522419989999135
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17790610440560037,
+                  "log_loss": 0.5291802915581718,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7911675222186234,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6768264417202721,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.021735655788912147,
+                  "log_loss": 0.08940531118328207,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9179813862058421,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.22670097604481623,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14888978757408555,
+                  "log_loss": 0.4524694975483115,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.805322308662094,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5906325881496005,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4490893822638194
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17780585221402678,
+                  "log_loss": 0.5289106516769269,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7913723356258855,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6746282001407954,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.020828173701466748,
+                  "log_loss": 0.08378709932504755,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.918016451923571,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.22747481704562517,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.149101423962013,
+                  "log_loss": 0.4529161752967709,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8048241278501173,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5930828931140024,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.44567661389986674
+            }
+          ],
+          "internal_validation": {
+            "is_click": {
+              "brier_score": 0.17787643236880044,
+              "log_loss": 0.5291841023936235,
+              "positive_rate": 0.37646666666666667,
+              "positives": 56470,
+              "roc_auc": 0.7912661672585695,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.6728149758475181,
+              "user_days_with_positive": 1578
+            },
+            "is_like": {
+              "brier_score": 0.022622176141668265,
+              "log_loss": 0.09447191510855382,
+              "positive_rate": 0.012606666666666667,
+              "positives": 1891,
+              "roc_auc": 0.9178115579469162,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.228568713200898,
+              "user_days_with_positive": 473
+            },
+            "long_view": {
+              "brier_score": 0.14887059869547647,
+              "log_loss": 0.4523988748046492,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8055949854053251,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5920539525149043,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4267216,
+          "tasks": [
+            "is_click",
+            "long_view",
+            "is_like"
+          ],
+          "training_seconds": 28.669169334000003
+        },
+        "shared_bottom": {
+          "artifact": "artifacts/ranker/multitask/shared_bottom_seed2027.pt",
+          "best_epoch": 4,
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1804390443038251,
+                  "log_loss": 0.5366581223728958,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7844545098698622,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6602426967662656,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022590184628212395,
+                  "log_loss": 0.09292442777783706,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9162206665729081,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.21067266933455023,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1504758186489073,
+                  "log_loss": 0.4569076225449499,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8004381265136196,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5816063534655579,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4948264473025004
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1789372829413909,
+                  "log_loss": 0.53272191585069,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7881571826821715,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6636086437819969,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.023903580871160714,
+                  "log_loss": 0.10053481130539682,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.917928407372764,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.21371696341948407,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.149167082761127,
+                  "log_loss": 0.453472588758493,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8042205526230404,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5865465691405571,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4572128853257497
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17844981594378828,
+                  "log_loss": 0.5311622359949898,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7896707765398056,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6677799809643408,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02013227214694451,
+                  "log_loss": 0.08404960565452085,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9189504064815072,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.21586914442648686,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14881010301290803,
+                  "log_loss": 0.45225986828094855,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8055288915956987,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5905720604953242,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4532207124900818
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1782196527986885,
+                  "log_loss": 0.5305171573119332,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7904770016376166,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6715072993105393,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02084994015418158,
+                  "log_loss": 0.08534190723942854,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9194537053957492,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.22073896315811792,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1486059247010039,
+                  "log_loss": 0.4518931543167563,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8063437516064205,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5933866006131021,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4503138773695628
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17841375623649186,
+                  "log_loss": 0.5307799428378112,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7902337643630365,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6688954953439004,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.021550792172687606,
+                  "log_loss": 0.08536219556542476,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9203005722924367,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.21854950375971177,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1488599503473732,
+                  "log_loss": 0.4523124391164681,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8058048784863926,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5913449551557769,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4469162198066711
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17845906918682927,
+                  "log_loss": 0.5306928906891429,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7899896294504485,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6699994833293855,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.019890936351380218,
+                  "log_loss": 0.08289019493556854,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9195501316563991,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.21905176134131477,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1492693785161136,
+                  "log_loss": 0.4532421900751565,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8048766458389105,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5869216128070295,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4430753242111206
+            }
+          ],
+          "internal_validation": {
+            "is_click": {
+              "brier_score": 0.1782196527986885,
+              "log_loss": 0.5305171573119332,
+              "positive_rate": 0.37646666666666667,
+              "positives": 56470,
+              "roc_auc": 0.7904770016376166,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.6715072993105393,
+              "user_days_with_positive": 1578
+            },
+            "is_like": {
+              "brier_score": 0.02084994015418158,
+              "log_loss": 0.08534190723942854,
+              "positive_rate": 0.012606666666666667,
+              "positives": 1891,
+              "roc_auc": 0.9194537053957492,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.22073896315811792,
+              "user_days_with_positive": 473
+            },
+            "long_view": {
+              "brier_score": 0.1486059247010039,
+              "log_loss": 0.4518931543167563,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8063437516064205,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5933866006131021,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4247404,
+          "tasks": [
+            "is_click",
+            "long_view",
+            "is_like"
+          ],
+          "training_seconds": 28.641200749999996
+        },
+        "single_task_mlp": {
+          "artifact": "artifacts/ranker/multitask/single_task_mlp_seed2027.pt",
+          "best_epoch": 4,
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.15214314901822937,
+                  "log_loss": 0.4615642309999138,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.7944877485442023,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5766614554377893,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.48270358963330584
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14947967126565911,
+                  "log_loss": 0.4542031282315503,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8032456025856455,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5884558933146617,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.45509842608769735
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14851664571729342,
+                  "log_loss": 0.45147943331753476,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8063599689508926,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5937428210486668,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.449165840883255
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14850353194113614,
+                  "log_loss": 0.45126080688936404,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8065165497364457,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5896508395041604,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4456527649561564
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14892380685088963,
+                  "log_loss": 0.45241164301652714,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8062662523610601,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5878188987932332,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.44217773191134135
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14983247439237185,
+                  "log_loss": 0.45442437206516345,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8043950929661733,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5922074840364043,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.43792811994870506
+            }
+          ],
+          "internal_validation": {
+            "long_view": {
+              "brier_score": 0.14850353194113614,
+              "log_loss": 0.45126080688936404,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8065165497364457,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5896508395041604,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4241130,
+          "tasks": [
+            "long_view"
+          ],
+          "training_seconds": 26.259516375000004
+        }
+      }
+    },
+    "2028": {
+      "comparison": {
+        "absolute_change_vs_single_task": {
+          "mmoe": -0.0008329094971781803,
+          "shared_bottom": 0.0011786973744936091,
+          "single_task_mlp": 0.0
+        },
+        "long_view_ndcg_at_10": {
+          "mmoe": 0.600454826245421,
+          "shared_bottom": 0.6024664331170928,
+          "single_task_mlp": 0.6012877357425992
+        },
+        "winner": "shared_bottom"
+      },
+      "standard_validation": {
+        "mmoe": {
+          "prediction_seconds": 2.029447125000047,
+          "rows_per_second": 1438920.464606799,
+          "tasks": {
+            "is_click": {
+              "brier_score": 0.17895022509787215,
+              "log_loss": 0.5320457619532579,
+              "positive_rate": 0.37839500063865206,
+              "positives": 1104994,
+              "roc_auc": 0.7891509721827995,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6739298797027089,
+              "user_days_with_positive": 7129
+            },
+            "is_like": {
+              "brier_score": 0.023203678046147903,
+              "log_loss": 0.09535437373308679,
+              "positive_rate": 0.014307175538222725,
+              "positives": 41780,
+              "roc_auc": 0.923183115155059,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.11737883701897485,
+              "user_days_with_positive": 4006
+            },
+            "long_view": {
+              "brier_score": 0.1489573989483802,
+              "log_loss": 0.4533161098294721,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8053686749688946,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.600454826245421,
+              "user_days_with_positive": 7098
+            }
+          }
+        },
+        "shared_bottom": {
+          "prediction_seconds": 0.8316775010002289,
+          "rows_per_second": 3511232.414593354,
+          "tasks": {
+            "is_click": {
+              "brier_score": 0.17939586735492477,
+              "log_loss": 0.5335766586000014,
+              "positive_rate": 0.37839500063865206,
+              "positives": 1104994,
+              "roc_auc": 0.7877118138976615,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6725226665887715,
+              "user_days_with_positive": 7129
+            },
+            "is_like": {
+              "brier_score": 0.02392986659510824,
+              "log_loss": 0.09518622326401195,
+              "positive_rate": 0.014307175538222725,
+              "positives": 41780,
+              "roc_auc": 0.9238375523984407,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.11880288150650667,
+              "user_days_with_positive": 4006
+            },
+            "long_view": {
+              "brier_score": 0.1491147699189759,
+              "log_loss": 0.45384194222717955,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8047211906386902,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6024664331170928,
+              "user_days_with_positive": 7098
+            }
+          }
+        },
+        "single_task_mlp": {
+          "prediction_seconds": 0.7317693310000095,
+          "rows_per_second": 3990619.5522150984,
+          "tasks": {
+            "long_view": {
+              "brier_score": 0.14903369359890273,
+              "log_loss": 0.45363684338828464,
+              "positive_rate": 0.2629000007876138,
+              "positives": 767724,
+              "roc_auc": 0.8052057322326167,
+              "rows": 2920213,
+              "user_day_ndcg_at_10": 0.6012877357425992,
+              "user_days_with_positive": 7098
+            }
+          }
+        }
+      },
+      "training": {
+        "mmoe": {
+          "artifact": "artifacts/ranker/multitask/mmoe_seed2028.pt",
+          "best_epoch": 4,
+          "gate_diagnostics": {
+            "is_click": {
+              "dominant_expert": 1,
+              "mean_expert_weights": [
+                0.17111207017292346,
+                0.39036838909262483,
+                0.19955057876210816,
+                0.23896896202061635
+              ],
+              "mean_normalized_entropy": 0.8138497178270279
+            },
+            "is_like": {
+              "dominant_expert": 0,
+              "mean_expert_weights": [
+                0.6997453462805598,
+                0.07401942268609886,
+                0.08219976574091258,
+                0.14403546514788512
+              ],
+              "mean_normalized_entropy": 0.5673114313809655
+            },
+            "long_view": {
+              "dominant_expert": 1,
+              "mean_expert_weights": [
+                0.10717525743882637,
+                0.32814663562498364,
+                0.26387415005654113,
+                0.30080395689697936
+              ],
+              "mean_normalized_entropy": 0.821016444476981
+            }
+          },
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1805206134220069,
+                  "log_loss": 0.5362426009688839,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7843398165921636,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6533015193421757,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.01963874172796032,
+                  "log_loss": 0.08807088248606539,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9160508722335747,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.17724479070224006,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.15071358044542135,
+                  "log_loss": 0.4576130815683727,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.7992488800132775,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5791163468388518,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.49844759937604266
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1788943577525368,
+                  "log_loss": 0.5321340516980165,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7887682157230319,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6670355163947944,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022301837103126096,
+                  "log_loss": 0.09198954693857472,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9207984172932452,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.22697093256830816,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14939953576114579,
+                  "log_loss": 0.4540284051493269,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.803987606954951,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5872869986994383,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.45766436949412026
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17820053725671753,
+                  "log_loss": 0.5301646566746643,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7905131041611685,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6716075125621959,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022331063154948715,
+                  "log_loss": 0.09364362413267126,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9194516827168883,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23027430366493254,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14883783231417055,
+                  "log_loss": 0.45260033931633004,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8055600857691708,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5938192751486822,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.45236852276802064
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1777330449398708,
+                  "log_loss": 0.5287536715352853,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7916497403239839,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6722572760192018,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02013645822493156,
+                  "log_loss": 0.08631855969073879,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9196807274434379,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.22952295620992874,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14842896621175877,
+                  "log_loss": 0.4514023359719177,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8066471873432192,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5922781014978644,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.44895007328987124
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1780490211774079,
+                  "log_loss": 0.529462028363504,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7908799347914551,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6732418017217745,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.021503556355675083,
+                  "log_loss": 0.08597481418815231,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9201025961274201,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23496665822602883,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14879278521117983,
+                  "log_loss": 0.4524134380246398,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8052843175023836,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.593367366014547,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.44543710835456846
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17858343829402223,
+                  "log_loss": 0.5306918434576339,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7902851593930377,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6670650149582714,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.020001956043467908,
+                  "log_loss": 0.0804763989848376,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9196933615990416,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.24232132562763573,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14991399573416594,
+                  "log_loss": 0.4551092457607782,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8038332384870909,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.587799406727981,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4412779745229085
+            }
+          ],
+          "internal_validation": {
+            "is_click": {
+              "brier_score": 0.1777330449398708,
+              "log_loss": 0.5287536715352853,
+              "positive_rate": 0.37646666666666667,
+              "positives": 56470,
+              "roc_auc": 0.7916497403239839,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.6722572760192018,
+              "user_days_with_positive": 1578
+            },
+            "is_like": {
+              "brier_score": 0.02013645822493156,
+              "log_loss": 0.08631855969073879,
+              "positive_rate": 0.012606666666666667,
+              "positives": 1891,
+              "roc_auc": 0.9196807274434379,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.22952295620992874,
+              "user_days_with_positive": 473
+            },
+            "long_view": {
+              "brier_score": 0.14842896621175877,
+              "log_loss": 0.4514023359719177,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8066471873432192,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5922781014978644,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4267216,
+          "tasks": [
+            "is_click",
+            "long_view",
+            "is_like"
+          ],
+          "training_seconds": 34.61009283300001
+        },
+        "shared_bottom": {
+          "artifact": "artifacts/ranker/multitask/shared_bottom_seed2028.pt",
+          "best_epoch": 4,
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.18056886171212827,
+                  "log_loss": 0.5370477642783176,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7844725439494721,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.654872496808582,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02174678443603401,
+                  "log_loss": 0.09149609998710131,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.916308936064171,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.21193744769068443,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.15093807065584897,
+                  "log_loss": 0.4582677836830159,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.7996173160955182,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5775938710395367,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.5003271978028615
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17913812101286586,
+                  "log_loss": 0.5329240358481548,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7877270358173469,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.663032061206209,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.02342789941578534,
+                  "log_loss": 0.09507425668422452,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9196334453166664,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.2227786269658908,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14933574392798302,
+                  "log_loss": 0.45390028510250285,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8037736209080815,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5906432323377543,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4578797561645508
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17834702622990148,
+                  "log_loss": 0.5308366012955406,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.789866843419877,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6675926907810813,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.024559369905679473,
+                  "log_loss": 0.10060156382342292,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9194056645412495,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.2224735320374519,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.1486795696417582,
+                  "log_loss": 0.45210733291125554,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.805738082736635,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5942478774338463,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.45357983302752175
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17800240541926377,
+                  "log_loss": 0.5298217400389822,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7907704731283135,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6704588009342967,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.020665675192260022,
+                  "log_loss": 0.08500757628322372,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9195979154360922,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.2228451408923544,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14839179025093358,
+                  "log_loss": 0.45129690002038386,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8066782527319307,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5941034964958346,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4504479128328959
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.17815434178571973,
+                  "log_loss": 0.5300759931446639,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7904193602512523,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6698183781754519,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.022129388816400662,
+                  "log_loss": 0.08717261848320201,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.919810475240663,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.23103298849756018,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14868225321539943,
+                  "log_loss": 0.45200532073335936,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8058177312284721,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5935964504483947,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.44721548340161643
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "is_click": {
+                  "brier_score": 0.1784798720892991,
+                  "log_loss": 0.5308053299496389,
+                  "positive_rate": 0.37646666666666667,
+                  "positives": 56470,
+                  "roc_auc": 0.7899309965158354,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.6727003539889995,
+                  "user_days_with_positive": 1578
+                },
+                "is_like": {
+                  "brier_score": 0.021251410131439444,
+                  "log_loss": 0.0869726327802094,
+                  "positive_rate": 0.012606666666666667,
+                  "positives": 1891,
+                  "roc_auc": 0.9195584223189148,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.22813913370981537,
+                  "user_days_with_positive": 473
+                },
+                "long_view": {
+                  "brier_score": 0.14928488978372675,
+                  "log_loss": 0.4536586736057886,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8044497488279452,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5942733468149712,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.443773972492218
+            }
+          ],
+          "internal_validation": {
+            "is_click": {
+              "brier_score": 0.17800240541926377,
+              "log_loss": 0.5298217400389822,
+              "positive_rate": 0.37646666666666667,
+              "positives": 56470,
+              "roc_auc": 0.7907704731283135,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.6704588009342967,
+              "user_days_with_positive": 1578
+            },
+            "is_like": {
+              "brier_score": 0.020665675192260022,
+              "log_loss": 0.08500757628322372,
+              "positive_rate": 0.012606666666666667,
+              "positives": 1891,
+              "roc_auc": 0.9195979154360922,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.2228451408923544,
+              "user_days_with_positive": 473
+            },
+            "long_view": {
+              "brier_score": 0.14839179025093358,
+              "log_loss": 0.45129690002038386,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8066782527319307,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5941034964958346,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4247404,
+          "tasks": [
+            "is_click",
+            "long_view",
+            "is_like"
+          ],
+          "training_seconds": 28.585609541999986
+        },
+        "single_task_mlp": {
+          "artifact": "artifacts/ranker/multitask/single_task_mlp_seed2028.pt",
+          "best_epoch": 4,
+          "history": [
+            {
+              "epoch": 1,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.15030935877561938,
+                  "log_loss": 0.45658065248540225,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8009652967637074,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5862524802592333,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.480507717110316
+            },
+            {
+              "epoch": 2,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14882693907776903,
+                  "log_loss": 0.4526296686224192,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8051489126766772,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5893072840647047,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4524373973274231
+            },
+            {
+              "epoch": 3,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14861118650504412,
+                  "log_loss": 0.4518880957787128,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8060775414435655,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.590445666502443,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4484401996008555
+            },
+            {
+              "epoch": 4,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.14841504472958536,
+                  "log_loss": 0.45136958509582115,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8065764582012835,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5943564193313773,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4455948096052806
+            },
+            {
+              "epoch": 5,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.1487943714686048,
+                  "log_loss": 0.45221779793215006,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.805919172031842,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5910814777746235,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.4422112604522705
+            },
+            {
+              "epoch": 6,
+              "internal_validation": {
+                "long_view": {
+                  "brier_score": 0.1494261143508566,
+                  "log_loss": 0.45386403121081886,
+                  "positive_rate": 0.26216,
+                  "positives": 39324,
+                  "roc_auc": 0.8045704221016041,
+                  "rows": 150000,
+                  "user_day_ndcg_at_10": 0.5873724720014398,
+                  "user_days_with_positive": 1559
+                }
+              },
+              "training_loss": 0.43778794280052186
+            }
+          ],
+          "internal_validation": {
+            "long_view": {
+              "brier_score": 0.14841504472958536,
+              "log_loss": 0.45136958509582115,
+              "positive_rate": 0.26216,
+              "positives": 39324,
+              "roc_auc": 0.8065764582012835,
+              "rows": 150000,
+              "user_day_ndcg_at_10": 0.5943564193313773,
+              "user_days_with_positive": 1559
+            }
+          },
+          "parameter_count": 4241130,
+          "tasks": [
+            "long_view"
+          ],
+          "training_seconds": 26.230083541
+        }
+      }
+    }
+  },
+  "selection_metric": "internal_validation_long_view_roc_auc",
+  "tasks": [
+    "is_click",
+    "long_view",
+    "is_like"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "models": {
+    "exposure": {
+      "candidate_items": 3471009,
+      "encode_catalog_seconds": 0.982035583,
+      "queries": 7098
+    },
+    "random": {
+      "candidate_items": 3471009,
+      "encode_catalog_seconds": 1.3322968749999995,
+      "queries": 7098
+    }
+  },
+  "period": "validation"
+}

@@ -1,0 +1,13 @@
+seed: 2026
+target_column: long_view
+history_size: 50
+top_k: [20, 50, 100]
+
+paths:
+  processed_dir: data/processed
+  results_file: results/retrieval_baselines.json
+
+itemcf:
+  context_window: 5
+  neighbors_per_item: 200
+  neighbor_file: artifacts/itemcf_neighbors.parquet

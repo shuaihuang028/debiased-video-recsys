@@ -1,0 +1,40 @@
+seed: 2026
+
+paths:
+  raw_dir: data/raw/KuaiRand-1K/data
+  processed_dir: data/processed
+  results_dir: results
+  standard_logs:
+    - log_standard_4_08_to_4_21_1k.csv
+    - log_standard_4_22_to_5_08_1k.csv
+  random_log: log_random_4_22_to_5_08_1k.csv
+
+# Epoch-millisecond cutoffs are inclusive and correspond to 23:59:59.999 in
+# Asia/Shanghai. time_ms is canonical because the two official standard files
+# overlap slightly in event time and a small fraction of date labels disagree
+# with their UTC+8 calendar day.
+standard_split:
+  train_end_ms: 1650556799999       # 2022-04-21
+  validation_end_ms: 1651247999999  # 2022-04-29
+  test_end_ms: 1652025599999        # 2022-05-08
+
+# Random traffic is never mixed into the ordinary training split. The early
+# partition is reserved for estimating/calibrating debiasing weights.
+random_split:
+  calibration_end_ms: 1650902399999 # 2022-04-25
+  validation_end_ms: 1651247999999  # 2022-04-29
+  test_end_ms: 1652025599999        # 2022-05-08
+
+features:
+  engine: duckdb
+  output_file: features_standard.parquet
+  random_output_file: features_random.parquet
+  temp_dir: artifacts/duckdb_tmp
+  watch_ratio_cap: 5.0
+  smoothing:
+    alpha: 1.0
+    beta: 10.0
+  windows_ms:
+    1h: 3600000
+    1d: 86400000
+    7d: 604800000

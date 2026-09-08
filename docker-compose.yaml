@@ -1,0 +1,28 @@
+services:
+  redis:
+    image: redis:7.4-alpine
+    command: redis-server --save "" --appendonly no
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 1s
+      retries: 20
+
+  api:
+    build: .
+    environment:
+      RECSYS_FEATURE_STORE: redis
+      RECSYS_REDIS_URL: redis://redis:6379/0
+      RECSYS_SERVING_CONFIG: configs/serving.yaml
+      RECSYS_API_HOST: 0.0.0.0
+    command: python -m short_video_recsys.cli serve --config configs/serving.yaml
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+      - ./configs:/app/configs:ro
+    depends_on:
+      redis:
+        condition: service_healthy

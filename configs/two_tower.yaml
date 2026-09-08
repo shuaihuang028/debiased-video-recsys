@@ -1,0 +1,44 @@
+seed: 2026
+
+paths:
+  item_metadata: data/raw/KuaiRand-1K/data/video_features_basic_1k.csv
+  train_interactions: data/processed/standard_train.parquet
+  item_feature_dir: artifacts/item_features
+  training_examples: artifacts/training/two_tower_examples.npz
+  sampling_summary: results/two_tower_sampling.json
+  checkpoint_dir: artifacts/checkpoints
+  training_results: results/two_tower_training.json
+  embedding_dir: artifacts/embeddings
+  encoding_results: results/two_tower_encoding.json
+  retrieval_results: results/two_tower_retrieval.json
+
+item_features:
+  author_buckets: 131072
+  music_buckets: 131072
+  max_tags: 5
+
+sampling:
+  target_column: long_view
+  history_length: 20
+  exposure_pool_size: 100
+  max_examples: 300000
+
+model:
+  embedding_dim: 64
+  categorical_dim: 16
+  batch_size: 2048
+  epochs: 5
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  temperature: 0.07
+  validation_fraction: 0.1
+  device: auto
+
+evaluation:
+  period: validation
+  top_k: [20, 50, 100]
+  index_type: ivf_flat
+  nlist: 4096
+  nprobe: 1024
+  search_k: 1000
+  exact_check_queries: 100
