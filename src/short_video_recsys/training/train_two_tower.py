@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import random
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -12,8 +13,11 @@ import numpy as np
 import torch
 from torch.nn import functional as F
 
+from short_video_recsys.features.recent_history import HISTORY_POLICY, TIMESTAMP_POLICY
 from short_video_recsys.training.item_features import load_item_feature_arrays
 from short_video_recsys.training.two_tower import TwoTower, TwoTowerConfig
+
+LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -138,11 +142,16 @@ def train_one_model(config: dict[str, Any], negative_mode: str) -> dict[str, Any
     _seed_everything(seed)
     paths = config["paths"]
     model_values = config["model"]
+    torch.set_num_threads(int(model_values.get("num_threads", 4)))
     item_values = config["item_features"]
     device = _device(str(model_values["device"]))
 
     loaded = np.load(Path(paths["training_examples"]), allow_pickle=False)
     examples = {name: loaded[name] for name in loaded.files}
+    if "history_max_time_ms" not in examples:
+        raise ValueError("Regenerate training examples with the strict history sampler")
+    if np.any(examples["history_max_time_ms"] >= examples["time_ms"]):
+        raise ValueError("Training histories must strictly precede their example timestamps")
     arrays = load_item_feature_arrays(Path(paths["item_feature_dir"]))
     with (Path(paths["item_feature_dir"]) / "summary.json").open(encoding="utf-8") as handle:
         item_summary = json.load(handle)
@@ -212,6 +221,14 @@ def train_one_model(config: dict[str, Any], negative_mode: str) -> dict[str, Any
             epoch, train_loss, train_accuracy, validation_loss, validation_accuracy
         )
         history.append(asdict(metrics))
+        LOGGER.info(
+            "%s epoch %d: train loss %.5f, validation loss %.5f, validation accuracy %.4f",
+            negative_mode,
+            epoch,
+            train_loss,
+            validation_loss,
+            validation_accuracy,
+        )
         if validation_loss < best_loss:
             best_loss = validation_loss
             torch.save(
@@ -221,6 +238,8 @@ def train_one_model(config: dict[str, Any], negative_mode: str) -> dict[str, Any
                     "negative_mode": negative_mode,
                     "split_time_ms": split_time,
                     "best_validation_loss": best_loss,
+                    "history_policy": HISTORY_POLICY,
+                    "timestamp_policy": TIMESTAMP_POLICY,
                 },
                 checkpoint_path,
             )
@@ -233,6 +252,8 @@ def train_one_model(config: dict[str, Any], negative_mode: str) -> dict[str, Any
         "best_validation_loss": best_loss,
         "checkpoint": str(checkpoint_path),
         "epochs": history,
+        "history_policy": HISTORY_POLICY,
+        "timestamp_policy": TIMESTAMP_POLICY,
     }
 
 
@@ -241,7 +262,6 @@ def train_negative_ablation(config: dict[str, Any]) -> dict[str, Any]:
 
     return {
         "objective": "pairwise_bpr",
-        "models": {
-            mode: train_one_model(config, mode) for mode in ("random", "exposure")
-        },
+        "config": config,
+        "models": {mode: train_one_model(config, mode) for mode in ("random", "exposure")},
     }

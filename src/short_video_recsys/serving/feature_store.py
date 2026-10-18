@@ -63,7 +63,9 @@ class RedisFeatureStore:
         self.client.ping()
         with (snapshot_dir / "metadata.json").open(encoding="utf-8") as handle:
             self.metadata = json.load(handle)
-        if seed_if_empty and not self.client.exists("recsys:snapshot:metadata"):
+        snapshot_id = self.metadata.get("snapshot_id")
+        self.key_prefix = f"recsys:{snapshot_id}" if snapshot_id else "recsys"
+        if seed_if_empty and not self.client.exists(f"{self.key_prefix}:snapshot:metadata"):
             self._seed(snapshot_dir)
 
     def _seed(self, snapshot_dir: Path) -> None:
@@ -77,7 +79,7 @@ class RedisFeatureStore:
         pipeline = self.client.pipeline(transaction=False)
         for user_id in range(len(embeddings)):
             pipeline.hset(
-                f"recsys:user:{user_id}",
+                f"{self.key_prefix}:user:{user_id}",
                 mapping={
                     "embedding": np.asarray(embeddings[user_id], dtype=np.float32).tobytes(),
                     "history": np.asarray(histories[user_id], dtype=np.float32).tobytes(),
@@ -86,12 +88,12 @@ class RedisFeatureStore:
             )
             if user_id % 200 == 199:
                 pipeline.execute()
-        pipeline.set("recsys:snapshot:metadata", json.dumps(self.metadata))
+        pipeline.set(f"{self.key_prefix}:snapshot:metadata", json.dumps(self.metadata))
         pipeline.execute()
 
     def get_user(self, user_id: int) -> UserFeatures | None:
         values = self.client.hmget(
-            f"recsys:user:{user_id}", ("embedding", "history", "recent")
+            f"{self.key_prefix}:user:{user_id}", ("embedding", "history", "recent")
         )
         if any(value is None for value in values):
             return None

@@ -1,0 +1,132 @@
+{
+  "baseline_checkpoint_sha256": "92b5ae8319497320b4edbc73a648917bf8a40028ccd9ef9a7258aac845196bbe",
+  "baseline_results": "results/end_to_end_validation.json",
+  "comparison_type": "single_seed_training_pipeline_correction",
+  "controls": {
+    "candidates": 100,
+    "identical_query_identities": true,
+    "identical_ranker_sha256": "f126aafcf205f5027502bd4050b206d20e8e580dac08b58514d3531f3fcdfbd7",
+    "indexed_items": 3471009,
+    "nprobe": 1024,
+    "queries": 7098,
+    "search_k": 1000,
+    "seed": 2026
+  },
+  "corrected_checkpoint_sha256": "3ef623c2a36334de11a146407ad455db3428d55067fed479e09e4c00ed0c42c9",
+  "corrected_results": "results/end_to_end_aligned_validation.json",
+  "groups": {
+    "all": {
+      "baseline_candidate_hits": 5,
+      "baseline_candidate_recall": 0.0007044237813468582,
+      "baseline_end_to_end_ndcg_at_10": 0.00014088475626937165,
+      "baseline_top10_hits": 1,
+      "corrected_candidate_hits": 5,
+      "corrected_candidate_recall": 0.0007044237813468582,
+      "corrected_end_to_end_ndcg_at_10": 0.00018532894854687642,
+      "corrected_top10_hits": 2,
+      "queries": 7098
+    },
+    "cold": {
+      "baseline_candidate_hits": 4,
+      "baseline_candidate_recall": 0.0007202016564638099,
+      "baseline_end_to_end_ndcg_at_10": 0.00018005041411595248,
+      "baseline_top10_hits": 1,
+      "corrected_candidate_hits": 5,
+      "corrected_candidate_recall": 0.0009002520705797623,
+      "corrected_end_to_end_ndcg_at_10": 0.00023684999582026088,
+      "corrected_top10_hits": 2,
+      "queries": 5554
+    },
+    "warm": {
+      "baseline_candidate_hits": 1,
+      "baseline_candidate_recall": 0.0006476683937823834,
+      "baseline_end_to_end_ndcg_at_10": 0.0,
+      "baseline_top10_hits": 0,
+      "corrected_candidate_hits": 0,
+      "corrected_candidate_recall": 0.0,
+      "corrected_end_to_end_ndcg_at_10": 0.0,
+      "corrected_top10_hits": 0,
+      "queries": 1544
+    }
+  },
+  "limitations": [
+    "A single seed cannot establish a robust recommendation quality gain.",
+    "Correcting sample eligibility and history also changes the reservoir sample.",
+    "The combined correction does not isolate causal effects of individual fixes.",
+    "Logged-impression ranker metrics and serving benchmarks are separate results."
+  ],
+  "retrieval_target_changes": {
+    "gained_hits": 2,
+    "lost_hits": 2,
+    "retained_hits": 3
+  },
+  "training_audit": {
+    "baseline_duplicate_history_examples": 14885,
+    "baseline_sample_rows": 300000,
+    "corrected": {
+      "duplicate_history_examples": 0,
+      "eligible_positive_events": 1330208,
+      "examples_with_exposure_negative": 299789,
+      "history_policy": "most_recent_unique_positive_items_newest_first",
+      "non_prior_exposure_negatives": 0,
+      "non_prior_history_examples": 0,
+      "random_negative_future_violations": 0,
+      "random_negative_history_collisions": 0,
+      "random_negative_positive_collisions": 0,
+      "saved_examples": 300000,
+      "timestamp_policy": "events_strictly_before_example_timestamp"
+    },
+    "corrected_training_config": {
+      "evaluation": {
+        "exact_check_queries": 100,
+        "index_type": "ivf_flat",
+        "nlist": 4096,
+        "nprobe": 1024,
+        "period": "validation",
+        "search_k": 1000,
+        "threads": 4,
+        "top_k": [
+          20,
+          50,
+          100
+        ]
+      },
+      "item_features": {
+        "author_buckets": 131072,
+        "max_tags": 5,
+        "music_buckets": 131072
+      },
+      "model": {
+        "batch_size": 2048,
+        "categorical_dim": 16,
+        "device": "cpu",
+        "embedding_dim": 64,
+        "epochs": 5,
+        "learning_rate": 0.001,
+        "num_threads": 4,
+        "temperature": 0.07,
+        "validation_fraction": 0.1,
+        "weight_decay": 1e-05
+      },
+      "paths": {
+        "checkpoint_dir": "artifacts/history_aligned/checkpoints",
+        "embedding_dir": "artifacts/history_aligned/embeddings",
+        "encoding_results": "results/history_aligned_encoding.json",
+        "item_feature_dir": "artifacts/item_features",
+        "item_metadata": "data/raw/KuaiRand-1K/data/video_features_basic_1k.csv",
+        "retrieval_results": "results/history_aligned_retrieval.json",
+        "sampling_summary": "results/history_aligned_sampling.json",
+        "train_interactions": "data/processed/standard_train.parquet",
+        "training_examples": "artifacts/history_aligned/training/two_tower_examples.npz",
+        "training_results": "results/history_aligned_training.json"
+      },
+      "sampling": {
+        "exposure_pool_size": 100,
+        "history_length": 20,
+        "max_examples": 300000,
+        "target_column": "long_view"
+      },
+      "seed": 2026
+    }
+  }
+}

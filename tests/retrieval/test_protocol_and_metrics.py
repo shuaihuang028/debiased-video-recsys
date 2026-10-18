@@ -59,3 +59,25 @@ def test_popularity_and_metrics_are_deterministic(tmp_path: Path) -> None:
     assert metrics.queries == 2
     assert metrics.metrics["recall_all@2"] == pytest.approx(0.5)
     assert metrics.metrics["hitrate@2"] == pytest.approx(0.5)
+
+
+def test_protocol_excludes_all_simultaneous_events_from_query_history(tmp_path: Path) -> None:
+    fit = tmp_path / "fit.parquet"
+    evaluation = tmp_path / "evaluation.parquet"
+    _write(fit, [(1, 10, 1, 1), (1, 11, 2, 1)])
+    _write(evaluation, [
+        (1, 10, DAY_MS, 1), (1, 12, DAY_MS, 1), (1, 13, DAY_MS, 1),
+        (1, 14, 2 * DAY_MS, 1),
+    ])
+    data = build_retrieval_period([fit], evaluation, history_size=3)
+    assert data.targets == {0: {12}, 1: {14}}
+    assert data.histories == {0: [11, 10], 1: [13, 12, 10]}
+
+
+def test_protocol_rejects_overlapping_fit_and_evaluation_periods(tmp_path: Path) -> None:
+    fit = tmp_path / "fit.parquet"
+    evaluation = tmp_path / "evaluation.parquet"
+    _write(fit, [(1, 10, 100, 1)])
+    _write(evaluation, [(1, 12, 100, 1)])
+    with pytest.raises(ValueError, match="strictly precede"):
+        build_retrieval_period([fit], evaluation)

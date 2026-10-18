@@ -1,0 +1,13 @@
+{
+  "duplicate_history_examples": 0,
+  "eligible_positive_events": 1330208,
+  "examples_with_exposure_negative": 299789,
+  "history_policy": "most_recent_unique_positive_items_newest_first",
+  "non_prior_exposure_negatives": 0,
+  "non_prior_history_examples": 0,
+  "random_negative_future_violations": 0,
+  "random_negative_history_collisions": 0,
+  "random_negative_positive_collisions": 0,
+  "saved_examples": 300000,
+  "timestamp_policy": "events_strictly_before_example_timestamp"
+}

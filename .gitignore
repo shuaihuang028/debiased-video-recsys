@@ -24,6 +24,13 @@ results/*
 !results/two_tower_training.json
 !results/two_tower_encoding.json
 !results/two_tower_retrieval.json
+!results/end_to_end_validation.json
+!results/end_to_end_aligned_validation.json
+!results/history_aligned_sampling.json
+!results/history_aligned_training.json
+!results/history_aligned_encoding.json
+!results/history_aligned_retrieval.json
+!results/history_alignment_comparison.json
 !results/ranker_standard_validation.json
 !results/multitask_comparison.json
 !results/randomized_evaluation.json

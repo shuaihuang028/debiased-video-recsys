@@ -5,9 +5,12 @@ from __future__ import annotations
 from collections import OrderedDict
 from collections.abc import Sequence
 from dataclasses import dataclass
+from itertools import groupby
 from pathlib import Path
 
 import duckdb
+
+from short_video_recsys.features.recent_history import recent_item_ids, touch_recent_item
 
 
 @dataclass(frozen=True)
@@ -62,6 +65,11 @@ def build_retrieval_period(
         ORDER BY user_id, time_ms, video_id
         """
     ).fetch_df()
+    fit_max_time = connection.execute(f"SELECT MAX(time_ms) FROM {fit_source}").fetchone()[0]
+    eval_min_time = connection.execute(f"SELECT MIN(time_ms) FROM {eval_source}").fetchone()[0]
+    if fit_max_time is not None and eval_min_time is not None and fit_max_time >= eval_min_time:
+        connection.close()
+        raise ValueError("Fit interactions must strictly precede the evaluation period")
     target_rows = connection.execute(
         f"""
         SELECT user_id, video_id, time_ms
@@ -72,17 +80,16 @@ def build_retrieval_period(
     ).fetch_df()
     connection.close()
 
-    user_state: dict[int, OrderedDict[int, None]] = {}
+    user_state: dict[int, OrderedDict[int, int]] = {}
 
-    def touch(user: int, item: int) -> None:
+    def touch(user: int, item: int, timestamp: int) -> None:
         state = user_state.setdefault(user, OrderedDict())
-        state.pop(item, None)
-        state[item] = None
+        touch_recent_item(state, item, timestamp)
 
-    for user_id, video_id, _ in history_rows.itertuples(index=False, name=None):
+    for user_id, video_id, time_ms in history_rows.itertuples(index=False, name=None):
         user = int(user_id)
         item = int(video_id)
-        touch(user, item)
+        touch(user, item, int(time_ms))
 
     query_users = {}
     query_times = {}
@@ -92,16 +99,19 @@ def build_retrieval_period(
     targets = {}
     warm_targets = {}
     emitted_user_days: set[tuple[int, int]] = set()
-    for user_id, video_id, time_ms in target_rows.itertuples(index=False, name=None):
+    rows = target_rows.itertuples(index=False, name=None)
+    for (user_id, time_ms), simultaneous in groupby(rows, key=lambda row: (row[0], row[2])):
         user = int(user_id)
-        item = int(video_id)
         timestamp = int(time_ms)
+        items = [int(row[1]) for row in simultaneous]
         state = user_state.setdefault(user, OrderedDict())
         local_day = (timestamp + 8 * 60 * 60 * 1_000) // (24 * 60 * 60 * 1_000)
         user_day = (user, local_day)
-        if user_day not in emitted_user_days and item not in state:
+        novel = [item for item in items if item not in state]
+        if user_day not in emitted_user_days and novel:
+            item = novel[0]
             query_id = len(targets)
-            history = list(reversed(state.keys()))[:history_size]
+            history = recent_item_ids(state, history_size)
             warm_history = [
                 history_item
                 for history_item in reversed(state.keys())
@@ -115,7 +125,9 @@ def build_retrieval_period(
             targets[query_id] = {item}
             warm_targets[query_id] = {item} if item in catalog_items else set()
             emitted_user_days.add(user_day)
-        touch(user, item)
+        # Every query at t sees only events strictly before t, including tied rows.
+        for item in items:
+            touch(user, item, timestamp)
 
     return RetrievalPeriodData(
         query_users=query_users,

@@ -1,0 +1,25 @@
+seed: 2026
+
+paths:
+  train_interactions: data/processed/standard_train.parquet
+  evaluation_interactions: data/processed/standard_validation.parquet
+  reference_features: data/processed/features_standard.parquet
+  item_feature_dir: artifacts/item_features
+  two_tower_checkpoint: artifacts/checkpoints/two_tower_random.pt
+  faiss_index: artifacts/embeddings/faiss_random.index
+  ranker_model: artifacts/ranker/lightgbm_long_view.txt
+  output_dir: artifacts/end_to_end
+  results: results/end_to_end_validation.json
+
+retrieval:
+  history_length: 20
+  candidates: 100
+  search_k: 1000
+  nprobe: 1024
+  threads: 4
+
+evaluation:
+  top_k: [1, 5, 10]
+  batch_rows: 50000
+  threads: 4
+  memory_limit: 2GB

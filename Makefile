@@ -52,6 +52,25 @@ eval-two-tower: encode-two-tower
 train-ranker:
 	$(PYTHON) -m short_video_recsys.cli train-ranker --config configs/ranker.yaml
 
+.PHONY: encode-e2e-queries prepare-e2e-candidates eval-end-to-end compare-history-alignment eval-end-to-end-baseline
+
+encode-e2e-queries:
+	$(PYTHON) -m short_video_recsys.cli encode-e2e-queries --config configs/end_to_end.yaml
+
+prepare-e2e-candidates: encode-e2e-queries
+	$(PYTHON) -m short_video_recsys.cli prepare-e2e-candidates --config configs/end_to_end.yaml
+
+eval-end-to-end: prepare-e2e-candidates
+	$(PYTHON) -m short_video_recsys.cli eval-end-to-end --config configs/end_to_end.yaml
+
+eval-end-to-end-baseline:
+	$(PYTHON) -m short_video_recsys.cli encode-e2e-queries --config configs/end_to_end_baseline.yaml
+	$(PYTHON) -m short_video_recsys.cli prepare-e2e-candidates --config configs/end_to_end_baseline.yaml
+	$(PYTHON) -m short_video_recsys.cli eval-end-to-end --config configs/end_to_end_baseline.yaml
+
+compare-history-alignment:
+	$(PYTHON) -m short_video_recsys.cli compare-history-alignment --config configs/end_to_end.yaml
+
 train-multitask-rankers:
 	$(PYTHON) -m short_video_recsys.cli train-multitask-rankers --config configs/multitask.yaml
 

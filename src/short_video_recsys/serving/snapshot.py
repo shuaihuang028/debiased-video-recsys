@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import time
 from pathlib import Path
@@ -12,12 +13,14 @@ import numpy as np
 import pandas as pd
 import torch
 
+from short_video_recsys.features.recent_history import HISTORY_POLICY, TIMESTAMP_POLICY
 from short_video_recsys.ranking.train_ranker import (
     COUNT_SUFFIXES,
     LOG_HISTORY_FEATURES,
     RATE_SUFFIXES,
     WINDOWS,
 )
+from short_video_recsys.retrieval.end_to_end_candidates import file_sha256
 from short_video_recsys.retrieval.two_tower_encoding import _load_model
 from short_video_recsys.training.item_features import load_item_feature_arrays
 from short_video_recsys.training.train_two_tower import _user_batch
@@ -51,15 +54,11 @@ def _aggregate_query(source: str, scope: str, entity: str, snapshot_ms: int) -> 
     ]
     for period, window_ms in periods:
         condition = (
-            ""
-            if window_ms is None
-            else f" FILTER (WHERE time_ms >= {snapshot_ms - window_ms})"
+            "" if window_ms is None else f" FILTER (WHERE time_ms >= {snapshot_ms - window_ms})"
         )
         for suffix, value in values.items():
             aggregate = "COUNT(*)" if suffix == "impression_count" else f"SUM({value})"
-            expressions.append(
-                f"COALESCE({aggregate}{condition}, 0) AS {scope}_{period}_{suffix}"
-            )
+            expressions.append(f"COALESCE({aggregate}{condition}, 0) AS {scope}_{period}_{suffix}")
     aggregates = ",\n            ".join(expressions)
     return f"""
         SELECT
@@ -107,9 +106,7 @@ def _history_values(frame: pd.DataFrame, scope: str) -> np.ndarray:
 
 
 def _initialize_history_array(path: Path, rows: int, columns: tuple[str, ...]) -> np.memmap:
-    array = np.lib.format.open_memmap(
-        path, mode="w+", dtype=np.float32, shape=(rows, len(columns))
-    )
+    array = np.lib.format.open_memmap(path, mode="w+", dtype=np.float32, shape=(rows, len(columns)))
     array[:] = 0
     for position, name in enumerate(columns):
         if name.endswith(RATE_SUFFIXES[:3]):
@@ -150,16 +147,20 @@ def _recent_histories(
 ) -> np.ndarray:
     rows = connection.execute(
         f"""
-        SELECT user_id, video_id, position
-        FROM (
+        WITH latest AS (
+            SELECT user_id, video_id, MAX(time_ms) AS last_time_ms
+            FROM {source}
+            WHERE time_ms < {snapshot_ms} AND long_view = 1
+            GROUP BY user_id, video_id
+        )
+        SELECT user_id, video_id, position FROM (
             SELECT
                 user_id,
                 video_id,
                 ROW_NUMBER() OVER (
-                    PARTITION BY user_id ORDER BY time_ms DESC, video_id DESC
+                    PARTITION BY user_id ORDER BY last_time_ms DESC, video_id DESC
                 ) AS position
-            FROM {source}
-            WHERE time_ms < {snapshot_ms} AND long_view = 1
+            FROM latest
         )
         WHERE position <= {history_length}
         ORDER BY user_id, position
@@ -229,9 +230,7 @@ def build_serving_snapshot(config: dict[str, Any]) -> dict[str, Any]:
         output_dir / "item_history_features.npy",
         len(item_arrays["present"]),
     )
-    histories = _recent_histories(
-        connection, source, snapshot_ms, max_user_id, history_length
-    )
+    histories = _recent_histories(connection, source, snapshot_ms, max_user_id, history_length)
     connection.close()
     np.save(output_dir / "recent_long_view_items.npy", histories, allow_pickle=False)
     _encode_users(
@@ -250,7 +249,25 @@ def build_serving_snapshot(config: dict[str, Any]) -> dict[str, Any]:
         "user_history_columns": list(_history_columns("user")),
         "item_history_columns": list(_history_columns("item")),
         "seconds": time.perf_counter() - started,
+        "history_policy": HISTORY_POLICY,
+        "timestamp_policy": TIMESTAMP_POLICY,
+        "two_tower_checkpoint_sha256": file_sha256(Path(paths["two_tower_checkpoint"])),
+        "ranker_model_sha256": file_sha256(Path(paths["ranker_model"])),
     }
+    identity = {
+        name: metadata[name]
+        for name in (
+            "as_of_ms",
+            "history_length",
+            "history_policy",
+            "timestamp_policy",
+            "two_tower_checkpoint_sha256",
+            "ranker_model_sha256",
+        )
+    }
+    metadata["snapshot_id"] = hashlib.sha256(
+        json.dumps(identity, sort_keys=True).encode("utf-8")
+    ).hexdigest()[:16]
     with (output_dir / "metadata.json").open("w", encoding="utf-8") as handle:
         json.dump(metadata, handle, indent=2, sort_keys=True)
         handle.write("\n")

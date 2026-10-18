@@ -25,11 +25,15 @@ serving path. Every result below comes from a saved machine-readable artifact.
 | MMoE, 3 seeds | Standard validation | User-day NDCG@10 | 0.6027 ± 0.0017 |
 | Standard-trained ranker | Random validation | User-day NDCG@10 | 0.6743 |
 | Density-ratio reweighted ranker | Random validation | User-day NDCG@10 | 0.6775 |
+| History-aligned FAISS Top-100 + LightGBM replay | Standard validation, 7,098 queries | Top-10 target hits, before -> after reranking | 1 -> 2 |
 | Online pipeline, Redis + 2 retrieval workers | 1,500 requests, concurrency 8 | Throughput | **215.5 QPS** |
 | Online pipeline, Redis + 2 retrieval workers | 1,500 requests, concurrency 8 | Client p95 | **47.2 ms** |
 
 Reweighting did not work as a debiasing method here: the small validation gain does not carry
 over to the random test period because the two exposure policies barely overlap (see below).
+
+Ranker AUC and NDCG are measured on logged impressions. Full-pipeline results are reported
+separately in [End-to-end candidate replay](#end-to-end-candidate-replay).
 
 ## Data audit
 
@@ -59,6 +63,9 @@ for a user on a UTC+8 calendar day. Validation models fit only the train partiti
 refit on train plus validation. Recent positive items are excluded from recommendations. Cold
 targets remain in the all-target denominator, and warm-target recall is reported separately.
 
+The table below contains the original runs. Current training and evaluation group simultaneous
+events before updating histories; see [History alignment](#history-alignment) for the rerun.
+
 | Validation model | Queries | Warm target share | Recall@100 (all) | Recall@100 (warm) | Catalog coverage@100 |
 |---|---:|---:|---:|---:|---:|
 | Popularity | 7,098 | 21.75% | 0.0282% | 0.1295% | 0.0050% |
@@ -67,26 +74,27 @@ targets remain in the all-target denominator, and warm-target recall is reported
 | Two-Tower, exposure negatives | 7,098 | 21.75% | 0.0423% | 0.0648% | 0.7300% |
 
 ItemCF increases catalog coverage but does not improve validation Recall@100. The random-negative
-Two-Tower improves all-target Recall@100 by 2.5x over popularity while retrieving from 3,471,009
-videos whose upload time precedes the query. Its content features make every validation target
-scorable even though only 21.75% appeared in the training-interaction catalog. Exposure negatives
-did not beat random negatives in this run; this negative result is retained and motivates a mixed
-or hard-negative experiment instead of a success claim.
+Two-Tower hits five targets versus two for popularity across 7,098 queries, retrieving from
+3,471,009 videos uploaded before the query. All targets have usable content metadata, though
+only 21.75% appeared in training interactions. Exposure negatives did not beat random negatives.
+The hit counts are too small to establish a reliable improvement.
 
 The FAISS IVF-Flat index uses 4,096 lists and probes 1,024. Against exact top-100 retrieval on a
 fixed 100-query sample, ANN recall is 99.94% for the random-negative model and 97.56% for the
 exposure-negative model. Batched search over all 7,098 validation queries takes 16.8 and 19.1
-seconds respectively on CPU (offline batch timing). Baseline, training, encoding, and retrieval outputs are stored in `results/` as JSON.
+seconds respectively on CPU (offline batch timing). Baseline, training, encoding, and retrieval
+outputs are stored in `results/` as JSON.
 
 ## Two-Tower design
 
 - The user tower combines a hashed user embedding with mean-pooled author and tag features from
-  the 20 most recent strictly prior long-view items.
+  the 20 most recent distinct, strictly prior long-view items, ordered newest first.
 - The item tower combines hashed author/music embeddings, tags, upload/video/music types,
   duration, and aspect ratio. Month-aggregated engagement statistics are deliberately excluded.
-- Pairwise BPR training uses a deterministic 300,000-example reservoir from 1,331,671 eligible
-  positive events. Random negatives obey item upload time; exposure negatives come from the
-  user's recent shown-but-not-long-view items.
+- The corrected pairwise BPR run uses a deterministic 300,000-example reservoir from 1,330,208
+  eligible positive events. Histories and exposure pools update only after all examples at a
+  user/timestamp are built. Negative items must have been uploaded strictly before the example;
+  exposure negatives must also come from strictly earlier impressions.
 - Item and query encoding runs in a PyTorch-only process; FAISS indexing runs in a separate
   process to avoid duplicate OpenMP runtimes on macOS.
 
@@ -107,8 +115,75 @@ time supplies a deterministic one-million-row training sample; the final 10% sup
 
 The evaluation covers all 2,920,213 validation impressions and 7,098 user-days containing at
 least one positive. Training early-stops at iteration 113 with internal-validation AUC 0.8143;
-batched CPU prediction takes 17.8 seconds (about 164k rows/second). Machine-readable metrics and gain-based feature importance are in
+batched CPU prediction takes 17.8 seconds (about 164k rows/second). Machine-readable metrics and
+gain-based feature importance are in
 `results/ranker_standard_validation.json`.
+
+## End-to-end candidate replay
+
+The current Two-Tower/FAISS retriever supplies 100 candidates per query to the saved LightGBM
+ranker. The replay scores all 709,800 candidates across 7,098 queries, comparing retrieval order
+with reranked order. Targets are never inserted into the candidate set, and retrieval misses
+count as zero. Warm targets appeared in training interactions; cold targets did not.
+
+Features are rebuilt at each query timestamp. All 72 historical features match the existing
+logged-target features across every query (maximum absolute difference below 1e-10). Target
+rows used for this check are excluded from scoring.
+
+| Target group | Queries | Targets in Top-100 | Recall@100 | Top-10 hits, retrieval -> reranked | NDCG@10, retrieval -> reranked |
+|---|---:|---:|---:|---:|---:|
+| All | 7,098 | 5 | 0.0704% | 1 -> 2 | 0.000041 -> 0.000185 |
+| Warm | 1,544 | 0 | 0% | 0 -> 0 | 0 -> 0 |
+| Cold | 5,554 | 5 | 0.0900% | 1 -> 2 | 0.000052 -> 0.000237 |
+
+Two targets move from ranks 12 and 92 to ranks 1 and 8; one drops from rank 10 to rank 23.
+Only five targets reach the ranker, so recall is the main bottleneck. Final HitRate@10 is
+0.0282%, with a query-level 95% Wilson interval of [0.0077%, 0.1027%]. These counts do not
+establish a reliable reranking gain. The interval does not account for repeated users.
+
+Each query has one logged positive; other candidates have unknown relevance. The JSON output
+includes HitRate, MRR, and NDCG at 1/5/10, raw hit counts, and metrics conditional on retrieval
+success. These are offline replay results, not estimates of online engagement.
+
+Run `make eval-end-to-end` after training and indexing. Results are in
+`results/end_to_end_aligned_validation.json`; per-query data stays under the ignored
+`artifacts/history_aligned/end_to_end/` directory. The original model's replay is preserved in
+`results/end_to_end_validation.json`.
+
+## History alignment
+
+The original sampler updated history between simultaneous events and kept repeated views,
+while evaluation used distinct items. Training, evaluation, and serving now use the latest
+20 distinct positive items, newest first, with all events at the prediction timestamp excluded.
+The negative sampler also checks its fallback draw against the positive item and history.
+
+Of the original 300,000 samples, 14,885 had duplicate history items. The new samples have zero
+duplicates, non-prior histories, non-prior exposure negatives, or random-negative collisions.
+Both retrievers were retrained with seed 2026, the same architecture and optimizer, five epochs,
+and a 300,000-example budget. Replays use the same queries, retrieval settings, and LightGBM model.
+
+| Measurement | Original training | Corrected training |
+|---|---:|---:|
+| Duplicate-history training examples | 14,885 / 300,000 | 0 / 300,000 |
+| All-target candidate hits@100 | 5 / 7,098 | 5 / 7,098 |
+| Warm-target candidate hits@100 | 1 / 1,544 | 0 / 1,544 |
+| Cold-target candidate hits@100 | 4 / 5,554 | 5 / 5,554 |
+| All-target reranked hits@10 | 1 / 7,098 | 2 / 7,098 |
+| All-target reranked NDCG@10 | 0.000141 | 0.000185 |
+
+Three candidate hits are retained, two gained, and two lost. This single-seed comparison fixes
+the history mismatch but does not show a reliable quality improvement. Changing eligibility
+also changes the reservoir sample, so individual fixes cannot be evaluated separately here.
+The exposure-negative model hits one target at Top-100; random negatives remain the default.
+
+Current configs write to `artifacts/history_aligned/`. Audit, training, encoding, and retrieval
+results are in `results/history_aligned_*.json`. `make compare-history-alignment` checks query
+identities and model settings, then writes `results/history_alignment_comparison.json`.
+Comparison and `make eval-end-to-end-baseline` require the retained original artifacts;
+the current pipeline can be reproduced independently from raw data.
+
+Serving snapshots record model hashes and a snapshot ID. Redis keys include that ID to keep
+vectors from different checkpoints separate. The current snapshot passed API smoke checks.
 
 ## Multi-task ranking with MMoE
 
@@ -233,6 +308,9 @@ artifacts and Redis service.
 Serving uses LightGBM because the MMoE experiment did not beat it on the
 primary ranking metric.
 
+The latency tables use the original checkpoint and snapshot. The current model has passed
+smoke checks but has not been benchmarked again.
+
 ## Data protocol
 
 - Standard traffic is split chronologically into train, validation, and test using `time_ms`.
@@ -280,6 +358,7 @@ make build-training-examples
 make train-two-tower
 make eval-two-tower
 make train-ranker
+make eval-end-to-end
 make train-multitask-rankers
 make eval-randomized
 make train-debiased-ranker

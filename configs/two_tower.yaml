@@ -4,13 +4,13 @@ paths:
   item_metadata: data/raw/KuaiRand-1K/data/video_features_basic_1k.csv
   train_interactions: data/processed/standard_train.parquet
   item_feature_dir: artifacts/item_features
-  training_examples: artifacts/training/two_tower_examples.npz
-  sampling_summary: results/two_tower_sampling.json
-  checkpoint_dir: artifacts/checkpoints
-  training_results: results/two_tower_training.json
-  embedding_dir: artifacts/embeddings
-  encoding_results: results/two_tower_encoding.json
-  retrieval_results: results/two_tower_retrieval.json
+  training_examples: artifacts/history_aligned/training/two_tower_examples.npz
+  sampling_summary: results/history_aligned_sampling.json
+  checkpoint_dir: artifacts/history_aligned/checkpoints
+  training_results: results/history_aligned_training.json
+  embedding_dir: artifacts/history_aligned/embeddings
+  encoding_results: results/history_aligned_encoding.json
+  retrieval_results: results/history_aligned_retrieval.json
 
 item_features:
   author_buckets: 131072
@@ -32,7 +32,8 @@ model:
   weight_decay: 0.00001
   temperature: 0.07
   validation_fraction: 0.1
-  device: auto
+  device: cpu
+  num_threads: 4
 
 evaluation:
   period: validation
@@ -42,3 +43,4 @@ evaluation:
   nprobe: 1024
   search_k: 1000
   exact_check_queries: 100
+  threads: 4

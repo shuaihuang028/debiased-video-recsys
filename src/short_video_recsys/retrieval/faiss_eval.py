@@ -62,7 +62,7 @@ def _filter_search_results(
         selected = []
         for item_raw in raw_ids[position]:
             item = int(item_raw)
-            if item < 0 or item in seen or upload_times[item] > query_time:
+            if item < 0 or item in seen or upload_times[item] >= query_time:
                 continue
             selected.append(item)
             if len(selected) == k:
@@ -100,7 +100,7 @@ def _exact_ann_recall(
         scores = np.einsum(
             "ij,j->i", embeddings, query_embeddings[int(position)], optimize=False
         )
-        scores[upload_times[item_ids] > data.query_times[query_id]] = -np.inf
+        scores[upload_times[item_ids] >= data.query_times[query_id]] = -np.inf
         for seen_item in data.seen_items[query_id]:
             seen_position = item_positions[seen_item] if seen_item < len(item_positions) else -1
             if seen_position >= 0:
@@ -118,6 +118,7 @@ def evaluate_faiss_models(config: dict[str, Any]) -> dict[str, Any]:
 
     paths = config["paths"]
     evaluation = config["evaluation"]
+    faiss.omp_set_num_threads(int(evaluation.get("threads", 4)))
     processed = Path("data/processed")
     data = build_retrieval_period(
         [processed / "standard_train.parquet"],
@@ -173,7 +174,7 @@ def evaluate_faiss_models(config: dict[str, Any]) -> dict[str, Any]:
             if (
                 target < len(arrays["present"])
                 and arrays["present"][target]
-                and arrays["upload_time_ms"][target] <= data.query_times[query_id]
+                and arrays["upload_time_ms"][target] < data.query_times[query_id]
             ):
                 scorable += 1
         results["models"][mode] = {

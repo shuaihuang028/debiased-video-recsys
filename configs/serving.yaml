@@ -5,10 +5,10 @@ paths:
     - data/processed/standard_train.parquet
     - data/processed/standard_validation.parquet
   item_feature_dir: artifacts/item_features
-  two_tower_checkpoint: artifacts/checkpoints/two_tower_random.pt
-  faiss_index: artifacts/embeddings/faiss_random.index
+  two_tower_checkpoint: artifacts/history_aligned/checkpoints/two_tower_random.pt
+  faiss_index: artifacts/history_aligned/embeddings/faiss_random.index
   ranker_model: artifacts/ranker/lightgbm_long_view.txt
-  snapshot_dir: artifacts/serving_snapshot
+  snapshot_dir: artifacts/history_aligned/serving_snapshot
   benchmark_results: results/serving_benchmark.json
 
 snapshot:

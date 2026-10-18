@@ -1,0 +1,464 @@
+{
+  "candidate_counts": {
+    "empty_queries": 0,
+    "max": 100,
+    "min": 100,
+    "total_rows": 709800
+  },
+  "candidate_export": {
+    "candidate_rows": 709800,
+    "candidates": 100,
+    "candidates_sha256": "b79ee35f6deeb9cd626a0e8cb0db28a639f5f6cc6bfee5f1350f36004b7be187",
+    "index_sha256": "fdc53e2450a653ae36effa45ed29ccbc3b36ff9bbd824712f0a3463f56f20630",
+    "indexed_items": 3471009,
+    "nprobe": 1024,
+    "queries": 7098,
+    "queries_sha256": "c4c49f0070a6ff0190cb835fbf630220ceff6dfe4792ff77b4fc6130a762800e",
+    "search_k": 1000,
+    "search_seconds": 22.591127083,
+    "target_injection": false,
+    "upload_rule": "upload_time_ms < query_time_ms"
+  },
+  "config": {
+    "comparison": {
+      "baseline_examples": "artifacts/training/two_tower_examples.npz",
+      "baseline_results": "results/end_to_end_validation.json",
+      "corrected_sampling_results": "results/history_aligned_sampling.json",
+      "corrected_training_results": "results/history_aligned_training.json",
+      "output": "results/history_alignment_comparison.json"
+    },
+    "evaluation": {
+      "batch_rows": 50000,
+      "memory_limit": "2GB",
+      "threads": 4,
+      "top_k": [
+        1,
+        5,
+        10
+      ]
+    },
+    "paths": {
+      "evaluation_interactions": "data/processed/standard_validation.parquet",
+      "faiss_index": "artifacts/history_aligned/embeddings/faiss_random.index",
+      "item_feature_dir": "artifacts/item_features",
+      "output_dir": "artifacts/history_aligned/end_to_end",
+      "ranker_model": "artifacts/ranker/lightgbm_long_view.txt",
+      "reference_features": "data/processed/features_standard.parquet",
+      "results": "results/end_to_end_aligned_validation.json",
+      "train_interactions": "data/processed/standard_train.parquet",
+      "two_tower_checkpoint": "artifacts/history_aligned/checkpoints/two_tower_random.pt"
+    },
+    "retrieval": {
+      "candidates": 100,
+      "history_length": 20,
+      "nprobe": 1024,
+      "search_k": 1000,
+      "threads": 4
+    },
+    "seed": 2026
+  },
+  "evaluation_type": "single_logged_target_replay",
+  "feature_parity_audit": {
+    "atol": 1e-05,
+    "audit_targets_scored_or_added_to_candidates": false,
+    "historical_features_checked": 72,
+    "max_absolute_error": 9.094947017729282e-12,
+    "mismatched_values": 0,
+    "queries_checked": 7098,
+    "rtol": 1e-06
+  },
+  "groups": {
+    "all": {
+      "candidate_hits": 5,
+      "candidate_recall": 0.0007044237813468582,
+      "candidate_recall_wilson_95_ci": [
+        0.000300924084471287,
+        0.0016480716655679693
+      ],
+      "conditional_on_retrieved": {
+        "lightgbm_reranked": {
+          "hitrate@1": 0.2,
+          "hitrate@10": 0.4,
+          "hitrate@10_wilson_95_ci": [
+            0.11762077423264783,
+            0.769275718723987
+          ],
+          "hitrate@1_wilson_95_ci": [
+            0.03622410863243014,
+            0.6244653702374747
+          ],
+          "hitrate@5": 0.2,
+          "hitrate@5_wilson_95_ci": [
+            0.03622410863243014,
+            0.6244653702374747
+          ],
+          "hits@1": 1,
+          "hits@10": 2,
+          "hits@5": 1,
+          "mrr@1": 0.2,
+          "mrr@10": 0.225,
+          "mrr@5": 0.2,
+          "ndcg@1": 0.2,
+          "ndcg@10": 0.26309297535714576,
+          "ndcg@5": 0.2
+        },
+        "queries": 5,
+        "retrieval_order": {
+          "hitrate@1": 0.0,
+          "hitrate@10": 0.2,
+          "hitrate@10_wilson_95_ci": [
+            0.03622410863243014,
+            0.6244653702374747
+          ],
+          "hitrate@1_wilson_95_ci": [
+            0.0,
+            0.43448246478317476
+          ],
+          "hitrate@5": 0.0,
+          "hitrate@5_wilson_95_ci": [
+            0.0,
+            0.43448246478317476
+          ],
+          "hits@1": 0,
+          "hits@10": 1,
+          "hits@5": 0,
+          "mrr@1": 0.0,
+          "mrr@10": 0.02,
+          "mrr@5": 0.0,
+          "ndcg@1": 0.0,
+          "ndcg@10": 0.05781296526357758,
+          "ndcg@5": 0.0
+        }
+      },
+      "lightgbm_reranked": {
+        "hitrate@1": 0.00014088475626937165,
+        "hitrate@10": 0.0002817695125387433,
+        "hitrate@10_wilson_95_ci": [
+          7.727476464262331e-05,
+          0.0010268696838306392
+        ],
+        "hitrate@1_wilson_95_ci": [
+          2.4870051813243607e-05,
+          0.000797657296138021
+        ],
+        "hitrate@5": 0.00014088475626937165,
+        "hitrate@5_wilson_95_ci": [
+          2.4870051813243607e-05,
+          0.000797657296138021
+        ],
+        "hits@1": 1,
+        "hits@10": 2,
+        "hits@5": 1,
+        "mrr@1": 0.00014088475626937165,
+        "mrr@10": 0.00015849535080304311,
+        "mrr@5": 0.00014088475626937165,
+        "ndcg@1": 0.00014088475626937165,
+        "ndcg@10": 0.00018532894854687642,
+        "ndcg@5": 0.00014088475626937165
+      },
+      "oracle_top_k_hitrate_ceiling": 0.0007044237813468582,
+      "queries": 7098,
+      "retrieval_order": {
+        "hitrate@1": 0.0,
+        "hitrate@10": 0.00014088475626937165,
+        "hitrate@10_wilson_95_ci": [
+          2.4870051813243607e-05,
+          0.000797657296138021
+        ],
+        "hitrate@1_wilson_95_ci": [
+          0.0,
+          0.0005409102474292667
+        ],
+        "hitrate@5": 0.0,
+        "hitrate@5_wilson_95_ci": [
+          0.0,
+          0.0005409102474292667
+        ],
+        "hits@1": 0,
+        "hits@10": 1,
+        "hits@5": 0,
+        "mrr@1": 0.0,
+        "mrr@10": 1.4088475626937166e-05,
+        "mrr@5": 0.0,
+        "ndcg@1": 0.0,
+        "ndcg@10": 4.0724827601843886e-05,
+        "ndcg@5": 0.0
+      }
+    },
+    "cold": {
+      "candidate_hits": 5,
+      "candidate_recall": 0.0009002520705797623,
+      "candidate_recall_wilson_95_ci": [
+        0.0003845932487467125,
+        0.0021058446169694347
+      ],
+      "conditional_on_retrieved": {
+        "lightgbm_reranked": {
+          "hitrate@1": 0.2,
+          "hitrate@10": 0.4,
+          "hitrate@10_wilson_95_ci": [
+            0.11762077423264783,
+            0.769275718723987
+          ],
+          "hitrate@1_wilson_95_ci": [
+            0.03622410863243014,
+            0.6244653702374747
+          ],
+          "hitrate@5": 0.2,
+          "hitrate@5_wilson_95_ci": [
+            0.03622410863243014,
+            0.6244653702374747
+          ],
+          "hits@1": 1,
+          "hits@10": 2,
+          "hits@5": 1,
+          "mrr@1": 0.2,
+          "mrr@10": 0.225,
+          "mrr@5": 0.2,
+          "ndcg@1": 0.2,
+          "ndcg@10": 0.26309297535714576,
+          "ndcg@5": 0.2
+        },
+        "queries": 5,
+        "retrieval_order": {
+          "hitrate@1": 0.0,
+          "hitrate@10": 0.2,
+          "hitrate@10_wilson_95_ci": [
+            0.03622410863243014,
+            0.6244653702374747
+          ],
+          "hitrate@1_wilson_95_ci": [
+            0.0,
+            0.43448246478317476
+          ],
+          "hitrate@5": 0.0,
+          "hitrate@5_wilson_95_ci": [
+            0.0,
+            0.43448246478317476
+          ],
+          "hits@1": 0,
+          "hits@10": 1,
+          "hits@5": 0,
+          "mrr@1": 0.0,
+          "mrr@10": 0.02,
+          "mrr@5": 0.0,
+          "ndcg@1": 0.0,
+          "ndcg@10": 0.05781296526357758,
+          "ndcg@5": 0.0
+        }
+      },
+      "lightgbm_reranked": {
+        "hitrate@1": 0.00018005041411595248,
+        "hitrate@10": 0.00036010082823190496,
+        "hitrate@10_wilson_95_ci": [
+          9.875819074790001e-05,
+          0.0013121238717926148
+        ],
+        "hitrate@1_wilson_95_ci": [
+          3.178402629646813e-05,
+          0.0010192461018521696
+        ],
+        "hitrate@5": 0.00018005041411595248,
+        "hitrate@5_wilson_95_ci": [
+          3.178402629646813e-05,
+          0.0010192461018521696
+        ],
+        "hits@1": 1,
+        "hits@10": 2,
+        "hits@5": 1,
+        "mrr@1": 0.00018005041411595248,
+        "mrr@10": 0.00020255671588044653,
+        "mrr@5": 0.00018005041411595248,
+        "ndcg@1": 0.00018005041411595248,
+        "ndcg@10": 0.00023684999582026088,
+        "ndcg@5": 0.00018005041411595248
+      },
+      "oracle_top_k_hitrate_ceiling": 0.0009002520705797623,
+      "queries": 5554,
+      "retrieval_order": {
+        "hitrate@1": 0.0,
+        "hitrate@10": 0.00018005041411595248,
+        "hitrate@10_wilson_95_ci": [
+          3.178402629646813e-05,
+          0.0010192461018521696
+        ],
+        "hitrate@1_wilson_95_ci": [
+          0.0,
+          0.0006911781937567603
+        ],
+        "hitrate@5": 0.0,
+        "hitrate@5_wilson_95_ci": [
+          0.0,
+          0.0006911781937567603
+        ],
+        "hits@1": 0,
+        "hits@10": 1,
+        "hits@5": 0,
+        "mrr@1": 0.0,
+        "mrr@10": 1.8005041411595247e-05,
+        "mrr@5": 0.0,
+        "ndcg@1": 0.0,
+        "ndcg@10": 5.2046241684891585e-05,
+        "ndcg@5": 0.0
+      }
+    },
+    "warm": {
+      "candidate_hits": 0,
+      "candidate_recall": 0.0,
+      "candidate_recall_wilson_95_ci": [
+        0.0,
+        0.0024818167253517977
+      ],
+      "conditional_on_retrieved": {
+        "lightgbm_reranked": {
+          "hitrate@1": null,
+          "hitrate@10": null,
+          "hitrate@10_wilson_95_ci": null,
+          "hitrate@1_wilson_95_ci": null,
+          "hitrate@5": null,
+          "hitrate@5_wilson_95_ci": null,
+          "hits@1": 0,
+          "hits@10": 0,
+          "hits@5": 0,
+          "mrr@1": null,
+          "mrr@10": null,
+          "mrr@5": null,
+          "ndcg@1": null,
+          "ndcg@10": null,
+          "ndcg@5": null
+        },
+        "queries": 0,
+        "retrieval_order": {
+          "hitrate@1": null,
+          "hitrate@10": null,
+          "hitrate@10_wilson_95_ci": null,
+          "hitrate@1_wilson_95_ci": null,
+          "hitrate@5": null,
+          "hitrate@5_wilson_95_ci": null,
+          "hits@1": 0,
+          "hits@10": 0,
+          "hits@5": 0,
+          "mrr@1": null,
+          "mrr@10": null,
+          "mrr@5": null,
+          "ndcg@1": null,
+          "ndcg@10": null,
+          "ndcg@5": null
+        }
+      },
+      "lightgbm_reranked": {
+        "hitrate@1": 0.0,
+        "hitrate@10": 0.0,
+        "hitrate@10_wilson_95_ci": [
+          0.0,
+          0.0024818167253517977
+        ],
+        "hitrate@1_wilson_95_ci": [
+          0.0,
+          0.0024818167253517977
+        ],
+        "hitrate@5": 0.0,
+        "hitrate@5_wilson_95_ci": [
+          0.0,
+          0.0024818167253517977
+        ],
+        "hits@1": 0,
+        "hits@10": 0,
+        "hits@5": 0,
+        "mrr@1": 0.0,
+        "mrr@10": 0.0,
+        "mrr@5": 0.0,
+        "ndcg@1": 0.0,
+        "ndcg@10": 0.0,
+        "ndcg@5": 0.0
+      },
+      "oracle_top_k_hitrate_ceiling": 0.0,
+      "queries": 1544,
+      "retrieval_order": {
+        "hitrate@1": 0.0,
+        "hitrate@10": 0.0,
+        "hitrate@10_wilson_95_ci": [
+          0.0,
+          0.0024818167253517977
+        ],
+        "hitrate@1_wilson_95_ci": [
+          0.0,
+          0.0024818167253517977
+        ],
+        "hitrate@5": 0.0,
+        "hitrate@5_wilson_95_ci": [
+          0.0,
+          0.0024818167253517977
+        ],
+        "hits@1": 0,
+        "hits@10": 0,
+        "hits@5": 0,
+        "mrr@1": 0.0,
+        "mrr@10": 0.0,
+        "mrr@5": 0.0,
+        "ndcg@1": 0.0,
+        "ndcg@10": 0.0,
+        "ndcg@5": 0.0
+      }
+    }
+  },
+  "limitations": [
+    "One logged positive is judged per query; other candidates have unknown relevance.",
+    "These metrics do not estimate online engagement or causal policy value.",
+    "Sparse candidate hits limit conclusions about reranking quality.",
+    "Historical retrieval used row-wise updates at tied timestamps; replay fixes them."
+  ],
+  "period": "standard_validation",
+  "protocol": {
+    "candidate_policy": "actual FAISS candidates; no target injection",
+    "cold_target": "target absent from standard-train interactions",
+    "confidence_intervals": "95% Wilson query-proportion intervals; not user-clustered",
+    "history": "standard events strictly before each query timestamp; tied labels excluded",
+    "missing_target_rank": 0,
+    "query": "first novel long-view target per user per UTC+8 day",
+    "request_context": "tab from the logged target request, shared by all its candidates",
+    "score_tie_break": "original retrieval rank",
+    "warm_target": "target appeared in standard-train interactions, regardless of label"
+  },
+  "query_encoding": {
+    "checkpoint_history_policy": "most_recent_unique_positive_items_newest_first",
+    "checkpoint_sha256": "3ef623c2a36334de11a146407ad455db3428d55067fed479e09e4c00ed0c42c9",
+    "checkpoint_timestamp_policy": "events_strictly_before_example_timestamp",
+    "history_rule": "strictly_before_query_timestamp",
+    "queries": 7098,
+    "queries_sha256": "c4c49f0070a6ff0190cb835fbf630220ceff6dfe4792ff77b4fc6130a762800e"
+  },
+  "ranker_sha256": "f126aafcf205f5027502bd4050b206d20e8e580dac08b58514d3531f3fcdfbd7",
+  "retrieved_target_rank_transitions": [
+    {
+      "reranked_target_rank": 50,
+      "retrieval_target_rank": 67,
+      "target_group": "cold"
+    },
+    {
+      "reranked_target_rank": 8,
+      "retrieval_target_rank": 92,
+      "target_group": "cold"
+    },
+    {
+      "reranked_target_rank": 1,
+      "retrieval_target_rank": 12,
+      "target_group": "cold"
+    },
+    {
+      "reranked_target_rank": 23,
+      "retrieval_target_rank": 10,
+      "target_group": "cold"
+    },
+    {
+      "reranked_target_rank": 14,
+      "retrieval_target_rank": 23,
+      "target_group": "cold"
+    }
+  ],
+  "timing_seconds": {
+    "build_features": 1.8124414999999998,
+    "ranker_prediction": 2.7012715830000005,
+    "total_replay": 8.238635208
+  }
+}

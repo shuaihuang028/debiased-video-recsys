@@ -262,6 +262,34 @@ def train_single_task_ranker(config: dict[str, Any]) -> None:
     _write_json(results, Path(config["paths"]["results"]))
 
 
+def encode_e2e_queries(config: dict[str, Any]) -> None:
+    from short_video_recsys.retrieval.end_to_end_candidates import encode_end_to_end_queries
+
+    results = encode_end_to_end_queries(config)
+    _write_json(results, Path(config["paths"]["output_dir"]) / "encoding_summary.json")
+
+
+def prepare_e2e_candidates(config: dict[str, Any]) -> None:
+    from short_video_recsys.retrieval.end_to_end_candidates import export_end_to_end_candidates
+
+    results = export_end_to_end_candidates(config)
+    _write_json(results, Path(config["paths"]["output_dir"]) / "candidate_summary.json")
+
+
+def eval_end_to_end(config: dict[str, Any]) -> None:
+    from short_video_recsys.ranking.end_to_end import evaluate_end_to_end
+
+    results = evaluate_end_to_end(config)
+    _write_json(results, Path(config["paths"]["results"]))
+
+
+def compare_histories(config: dict[str, Any]) -> None:
+    from short_video_recsys.ranking.history_alignment import compare_history_alignment
+
+    results = compare_history_alignment(config)
+    _write_json(results, Path(config["comparison"]["output"]))
+
+
 def train_multitask_rankers(config: dict[str, Any]) -> None:
     from short_video_recsys.ranking.train_multitask import train_multitask_comparison
 
@@ -321,6 +349,10 @@ def _parser() -> argparse.ArgumentParser:
         "encode-two-tower",
         "eval-two-tower",
         "train-ranker",
+        "encode-e2e-queries",
+        "prepare-e2e-candidates",
+        "eval-end-to-end",
+        "compare-history-alignment",
         "train-multitask-rankers",
         "eval-randomized",
         "train-debiased-ranker",
@@ -350,6 +382,10 @@ def main() -> None:
         "encode-two-tower": encode_towers,
         "eval-two-tower": eval_towers,
         "train-ranker": train_single_task_ranker,
+        "encode-e2e-queries": encode_e2e_queries,
+        "prepare-e2e-candidates": prepare_e2e_candidates,
+        "eval-end-to-end": eval_end_to_end,
+        "compare-history-alignment": compare_histories,
         "train-multitask-rankers": train_multitask_rankers,
         "eval-randomized": eval_randomized,
         "train-debiased-ranker": train_debiased_ranker,

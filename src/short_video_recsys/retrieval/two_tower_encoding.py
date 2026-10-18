@@ -19,6 +19,8 @@ def _load_model(checkpoint_path: Path, device: torch.device) -> TwoTower:
     checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
     model = TwoTower(TwoTowerConfig(**checkpoint["model_config"]))
     model.load_state_dict(checkpoint["model_state"])
+    model.history_policy = checkpoint.get("history_policy", "legacy_unspecified")
+    model.timestamp_policy = checkpoint.get("timestamp_policy", "legacy_unspecified")
     return model.to(device).eval()
 
 
@@ -85,6 +87,7 @@ def encode_two_tower_models(config: dict[str, Any]) -> dict[str, Any]:
     """Materialize item/query vectors without importing FAISS in this process."""
 
     paths = config["paths"]
+    torch.set_num_threads(int(config["model"].get("num_threads", 4)))
     evaluation = config["evaluation"]
     if evaluation["period"] != "validation":
         raise ValueError("Current checkpoints are train-only; only validation evaluation is valid")
